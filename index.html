@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Image Search Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Fashion Image Search Hub</h1>
+      <p>
+        Upload a fashion image and this tool will identify visual keywords, then
+        search similar items across Yoox, Net-a-Porter, SSG, Kream, Jente,
+        SSENSE, and Cettire.
+      </p>
+
+      <section class="panel">
+        <label for="imageInput">1) Upload image</label>
+        <input type="file" id="imageInput" accept="image/*" />
+
+        <div class="preview-wrap">
+          <img id="preview" alt="Uploaded preview" hidden />
+        </div>
+
+        <label for="manualQuery">2) Optional manual keyword override</label>
+        <input
+          id="manualQuery"
+          type="text"
+          placeholder="e.g. black leather jacket"
+        />
+
+        <button id="analyzeBtn" disabled>Analyze image & search</button>
+      </section>
+
+      <section class="panel" id="analysisPanel" hidden>
+        <h2>Detected keywords</h2>
+        <ul id="keywordList"></ul>
+      </section>
+
+      <section class="panel" id="resultsPanel" hidden>
+        <h2>Search links</h2>
+        <div id="results"></div>
+      </section>
+
+      <p class="footnote">
+        Note: This app uses on-device image classification (MobileNet) and turns
+        the result into keyword-based searches on each site.
+      </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
