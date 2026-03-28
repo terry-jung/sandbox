@@ -3,54 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fashion Image Search Hub</title>
+    <title>Live Lens Translator</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Fashion Image Search Hub</h1>
-      <p>
-        Upload a fashion image and this tool will identify visual keywords, then
-        search similar items across Yoox, Net-a-Porter, SSG, Kream, Jente,
-        SSENSE, and Cettire.
+      <h1>Live Lens Translator</h1>
+      <p class="intro">
+        Hover your camera over printed text to see near real-time translation in
+        a magnifier-style lens. Inspired by camera translation tools, but made
+        for continuous hover use.
       </p>
 
-      <section class="panel">
-        <label for="imageInput">1) Upload image</label>
-        <input type="file" id="imageInput" accept="image/*" />
-
-        <div class="preview-wrap">
-          <img id="preview" alt="Uploaded preview" hidden />
+      <section class="panel controls">
+        <div class="control-row">
+          <label for="sourceLang">Source language</label>
+          <select id="sourceLang">
+            <option value="auto" selected>Auto-detect</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="zh">Chinese</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+          </select>
         </div>
 
-        <label for="manualQuery">2) Optional manual keyword override</label>
-        <input
-          id="manualQuery"
-          type="text"
-          placeholder="e.g. black leather jacket"
-        />
+        <div class="control-row">
+          <label for="targetLang">Translate to</label>
+          <select id="targetLang">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="zh">Chinese</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+          </select>
+        </div>
 
-        <button id="analyzeBtn" disabled>Analyze image & search</button>
+        <div class="actions">
+          <button id="startBtn">Start camera</button>
+          <button id="stopBtn" disabled>Stop camera</button>
+        </div>
+
+        <p id="status" class="status">Camera is off.</p>
       </section>
 
-      <section class="panel" id="analysisPanel" hidden>
-        <h2>Detected keywords</h2>
-        <ul id="keywordList"></ul>
+      <section class="panel viewer-panel">
+        <div class="viewer" id="viewer">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div id="lens" class="lens" hidden>
+            <p class="lens-label">Translated</p>
+            <p id="lensText">Point at text</p>
+          </div>
+        </div>
       </section>
 
-      <section class="panel" id="resultsPanel" hidden>
-        <h2>Search links</h2>
-        <div id="results"></div>
+      <section class="panel outputs">
+        <h2>Live text output</h2>
+        <div class="output-grid">
+          <article>
+            <h3>Detected text</h3>
+            <p id="rawText" class="output-text">No text yet.</p>
+          </article>
+          <article>
+            <h3>Translated text</h3>
+            <p id="translatedText" class="output-text">No translation yet.</p>
+          </article>
+        </div>
       </section>
 
-      <p class="footnote">
-        Note: This app uses on-device image classification (MobileNet) and turns
-        the result into keyword-based searches on each site.
-      </p>
+      <canvas id="captureCanvas" hidden></canvas>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

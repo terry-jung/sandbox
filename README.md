@@ -1,6 +1,21 @@
 # terrypractice
 
-Image-based fashion search helper website.
+Live camera hover translation web app.
+
+## What it does
+
+This app provides a magnifier-style live translation experience:
+
+1. Start your phone/laptop camera in the browser.
+2. Hover the lens over text on paper/signs/screens.
+3. OCR reads text inside the focus box.
+4. The app translates it and shows the result inside the floating lens and output panel.
+
+## Tech used
+
+- `getUserMedia` for camera streaming.
+- `Tesseract.js` for in-browser OCR.
+- MyMemory translation API for translated text output.
 
 ## Run locally
 
@@ -10,16 +25,5 @@ python3 -m http.server 4173
 
 Then open `http://localhost:4173`.
 
-## How it works
-
-1. Upload an image.
-2. The browser runs MobileNet classification (TensorFlow.js).
-3. The app extracts keywords from the image and builds search links for:
-   - Yoox
-   - Net-a-Porter
-   - SSG
-   - Kream
-   - Jente
-   - SSENSE
-   - Cettire
-4. Optionally, you can override the generated keywords with your own query.
+> Note: Camera access requires HTTPS in most mobile browsers. For local desktop testing,
+> `localhost` is generally allowed.

@@ -1,119 +1,245 @@
-const imageInput = document.getElementById('imageInput');
-const preview = document.getElementById('preview');
-const analyzeBtn = document.getElementById('analyzeBtn');
-const manualQuery = document.getElementById('manualQuery');
-const keywordList = document.getElementById('keywordList');
-const results = document.getElementById('results');
-const analysisPanel = document.getElementById('analysisPanel');
-const resultsPanel = document.getElementById('resultsPanel');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const statusEl = document.getElementById('status');
+const sourceLang = document.getElementById('sourceLang');
+const targetLang = document.getElementById('targetLang');
+const video = document.getElementById('video');
+const overlay = document.getElementById('overlay');
+const viewer = document.getElementById('viewer');
+const lens = document.getElementById('lens');
+const lensText = document.getElementById('lensText');
+const rawText = document.getElementById('rawText');
+const translatedText = document.getElementById('translatedText');
+const captureCanvas = document.getElementById('captureCanvas');
 
-let classifier;
+const overlayCtx = overlay.getContext('2d');
+const captureCtx = captureCanvas.getContext('2d', { willReadFrequently: true });
 
-const sites = [
-  {
-    name: 'Yoox',
-    builder: (q) => `https://www.yoox.com/searchresult?text=${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'Net-a-Porter',
-    builder: (q) => `https://www.net-a-porter.com/en-us/shop/search/${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'SSG',
-    builder: (q) => `https://www.ssg.com/search.ssg?target=all&query=${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'Kream',
-    builder: (q) => `https://kream.co.kr/search?keyword=${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'Jente',
-    builder: (q) => `https://jente.kr/search?keyword=${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'SSENSE',
-    builder: (q) => `https://www.ssense.com/en-us/search?q=${encodeURIComponent(q)}`,
-  },
-  {
-    name: 'Cettire',
-    builder: (q) => `https://www.cettire.com/search?q=${encodeURIComponent(q)}`,
-  },
-];
+let stream;
+let frameTimer;
+let isProcessing = false;
+let lastTranslation = '';
+let lastRawText = '';
+let hasPointer = false;
 
-imageInput.addEventListener('change', () => {
-  const file = imageInput.files?.[0];
-  if (!file) {
+const OCR_INTERVAL_MS = 1500;
+const LENS_SIZE = 180;
+const DEFAULT_TARGET = 'en';
+
+targetLang.value = DEFAULT_TARGET;
+
+startBtn.addEventListener('click', startCamera);
+stopBtn.addEventListener('click', stopCamera);
+
+sourceLang.addEventListener('change', clearOutput);
+targetLang.addEventListener('change', () => {
+  clearOutput();
+  statusEl.textContent = 'Target language changed. Keep hovering to translate.';
+});
+
+viewer.addEventListener('pointermove', (event) => {
+  hasPointer = true;
+  lens.hidden = false;
+  moveLens(event);
+});
+
+viewer.addEventListener('pointerleave', () => {
+  hasPointer = false;
+  lens.hidden = true;
+  overlayCtx.clearRect(0, 0, overlay.width, overlay.height);
+});
+
+async function startCamera() {
+  if (stream) {
     return;
   }
 
-  preview.src = URL.createObjectURL(file);
-  preview.hidden = false;
-  analyzeBtn.disabled = false;
-});
+  try {
+    statusEl.textContent = 'Requesting camera access...';
 
-analyzeBtn.addEventListener('click', async () => {
-  analyzeBtn.disabled = true;
-  analyzeBtn.textContent = 'Analyzing image...';
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: { ideal: 'environment' },
+      },
+      audio: false,
+    });
+
+    video.srcObject = stream;
+    await video.play();
+
+    syncCanvasSize();
+    window.addEventListener('resize', syncCanvasSize);
+
+    frameTimer = setInterval(processFrame, OCR_INTERVAL_MS);
+
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    statusEl.textContent = 'Camera on. Hover over text to translate.';
+  } catch (error) {
+    statusEl.textContent = `Could not start camera: ${error.message}`;
+  }
+}
+
+function stopCamera() {
+  if (!stream) {
+    return;
+  }
+
+  stream.getTracks().forEach((track) => track.stop());
+  stream = null;
+
+  if (frameTimer) {
+    clearInterval(frameTimer);
+    frameTimer = null;
+  }
+
+  window.removeEventListener('resize', syncCanvasSize);
+  overlayCtx.clearRect(0, 0, overlay.width, overlay.height);
+
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+  lens.hidden = true;
+  statusEl.textContent = 'Camera stopped.';
+}
+
+function syncCanvasSize() {
+  const rect = video.getBoundingClientRect();
+  overlay.width = rect.width;
+  overlay.height = rect.height;
+  captureCanvas.width = rect.width;
+  captureCanvas.height = rect.height;
+}
+
+function moveLens(event) {
+  const rect = viewer.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  const boundedX = clamp(x, LENS_SIZE / 2, rect.width - LENS_SIZE / 2);
+  const boundedY = clamp(y, LENS_SIZE / 2, rect.height - LENS_SIZE / 2);
+
+  lens.style.left = `${boundedX}px`;
+  lens.style.top = `${boundedY}px`;
+
+  drawFocusBox(boundedX, boundedY);
+}
+
+function drawFocusBox(centerX, centerY) {
+  overlayCtx.clearRect(0, 0, overlay.width, overlay.height);
+  overlayCtx.strokeStyle = '#facc15';
+  overlayCtx.lineWidth = 2;
+  overlayCtx.setLineDash([6, 4]);
+  overlayCtx.strokeRect(
+    centerX - LENS_SIZE / 2,
+    centerY - LENS_SIZE / 2,
+    LENS_SIZE,
+    LENS_SIZE
+  );
+  overlayCtx.setLineDash([]);
+}
+
+async function processFrame() {
+  if (!stream || !hasPointer || isProcessing || lens.hidden) {
+    return;
+  }
+
+  isProcessing = true;
 
   try {
-    if (!classifier) {
-      classifier = await mobilenet.load();
+    const lensRect = lens.getBoundingClientRect();
+    const viewerRect = viewer.getBoundingClientRect();
+
+    const x = clamp(lensRect.left - viewerRect.left - LENS_SIZE / 2, 0, captureCanvas.width - LENS_SIZE);
+    const y = clamp(lensRect.top - viewerRect.top - LENS_SIZE / 2, 0, captureCanvas.height - LENS_SIZE);
+
+    captureCtx.drawImage(video, 0, 0, captureCanvas.width, captureCanvas.height);
+
+    const roi = captureCtx.getImageData(x, y, LENS_SIZE, LENS_SIZE);
+    const roiCanvas = document.createElement('canvas');
+    roiCanvas.width = LENS_SIZE;
+    roiCanvas.height = LENS_SIZE;
+    roiCanvas.getContext('2d').putImageData(roi, 0, 0);
+
+    const result = await Tesseract.recognize(roiCanvas, sourceLang.value === 'auto' ? 'eng' : mapToTesseract(sourceLang.value), {
+      logger: () => {},
+    });
+
+    const text = cleanText(result.data.text);
+    if (!text || text === lastRawText) {
+      return;
     }
 
-    const predictions = await classifier.classify(preview, 5);
-    const keywords = buildKeywords(predictions);
-    const finalQuery = manualQuery.value.trim() || keywords.join(' ');
+    lastRawText = text;
+    rawText.textContent = text;
 
-    renderKeywords(keywords);
-    renderResults(finalQuery);
+    const translated = await translateText(text, sourceLang.value, targetLang.value);
+    if (translated) {
+      lastTranslation = translated;
+      translatedText.textContent = translated;
+      lensText.textContent = translated;
+      statusEl.textContent = 'Live translation updated.';
+    }
   } catch (error) {
-    alert(`Failed to analyze image: ${error.message}`);
+    statusEl.textContent = `Translation error: ${error.message}`;
   } finally {
-    analyzeBtn.disabled = false;
-    analyzeBtn.textContent = 'Analyze image & search';
+    isProcessing = false;
   }
-});
-
-function buildKeywords(predictions) {
-  const cleaned = predictions
-    .flatMap((p) => p.className.split(','))
-    .map((token) => token.trim().toLowerCase())
-    .filter((token) => token.length > 2)
-    .map((token) => token.replace(/[_-]/g, ' '));
-
-  return [...new Set(cleaned)].slice(0, 6);
 }
 
-function renderKeywords(keywords) {
-  analysisPanel.hidden = false;
-  keywordList.innerHTML = '';
+function mapToTesseract(lang) {
+  const map = {
+    en: 'eng',
+    es: 'spa',
+    fr: 'fra',
+    de: 'deu',
+    it: 'ita',
+    pt: 'por',
+    ja: 'jpn',
+    ko: 'kor',
+    zh: 'chi_sim',
+    ar: 'ara',
+    hi: 'hin',
+  };
 
-  keywords.forEach((kw) => {
-    const li = document.createElement('li');
-    li.textContent = kw;
-    keywordList.appendChild(li);
-  });
+  return map[lang] || 'eng';
 }
 
-function renderResults(query) {
-  resultsPanel.hidden = false;
-  results.innerHTML = '';
+async function translateText(text, source, target) {
+  if (!text.trim()) {
+    return '';
+  }
 
-  sites.forEach((site) => {
-    const card = document.createElement('article');
-    card.className = 'result-card';
+  if (source !== 'auto' && source === target) {
+    return text;
+  }
 
-    const title = document.createElement('h3');
-    title.textContent = site.name;
+  const url = new URL('https://api.mymemory.translated.net/get');
+  url.searchParams.set('q', text);
+  url.searchParams.set('langpair', `${source === 'auto' ? 'auto' : source}|${target}`);
 
-    const link = document.createElement('a');
-    link.href = site.builder(query);
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = `Search "${query}"`;
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Translate API failed (${response.status})`);
+  }
 
-    card.appendChild(title);
-    card.appendChild(link);
-    results.appendChild(card);
-  });
+  const data = await response.json();
+  const translated = data?.responseData?.translatedText?.trim();
+
+  return translated || '';
+}
+
+function clearOutput() {
+  lastRawText = '';
+  lastTranslation = '';
+  rawText.textContent = 'No text yet.';
+  translatedText.textContent = 'No translation yet.';
+  lensText.textContent = 'Point at text';
+}
+
+function cleanText(text) {
+  return text.replace(/\s+/g, ' ').trim();
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
