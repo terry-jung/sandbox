@@ -1,0 +1,66 @@
+.perspective {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--card-aspect-ratio);
+  max-height: 70vh;
+  transform-style: preserve-3d;
+  transition: transform var(--duration-card-flip) var(--ease-default);
+  cursor: pointer;
+  border-radius: var(--radius-xl);
+}
+
+.card:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.flipped:active {
+  transform: rotateY(180deg) scale(0.98);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.front {
+  z-index: var(--z-card);
+}
+
+.back {
+  z-index: var(--z-card);
+  transform: rotateY(180deg);
+}
+
+@media (min-width: 768px) {
+  .perspective {
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .perspective {
+    max-width: 480px;
+  }
+}

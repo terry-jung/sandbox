@@ -1,0 +1,64 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  min-height: var(--touch-target-min);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  width: 100%;
+}
+
+.card:hover {
+  background-color: var(--color-bg-card-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.kanji {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-cjk);
+}
+
+.reading {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* States */
+.selected {
+  background-color: var(--color-quiz-selected-bg);
+  border: 2px solid var(--color-quiz-selected-border);
+}
+
+.correct {
+  background-color: var(--color-quiz-correct-bg);
+  border: 2px solid var(--color-quiz-correct-border);
+  animation: matchExit var(--duration-match-out) var(--ease-default) forwards;
+  animation-delay: 300ms;
+}
+
+.dimmed {
+  opacity: 0.5;
+}
+
+.matched {
+  display: none;
+}
+
+@keyframes matchExit {
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(-8px);
+  }
+}

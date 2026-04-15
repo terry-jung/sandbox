@@ -1,0 +1,22 @@
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-neutral-300);
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.active {
+  background-color: var(--color-primary-500);
+  transform: scale(1.25);
+}
+
+.studied {
+  background-color: var(--color-neutral-500);
+}

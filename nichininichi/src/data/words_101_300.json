@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "n5_101",
+    "kanji": "開ける",
+    "reading": "あける",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to open", "it": "aprire", "ko": "열다" },
+    "example": { "ja": "窓を開けてください。", "en": "Please open the window." }
+  },
+  {
+    "id": "n5_102",
+    "kanji": "閉める",
+    "reading": "しめる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to close", "it": "chiudere", "ko": "닫다" },
+    "example": { "ja": "ドアを閉めてください。", "en": "Please close the door." }
+  },
+  {
+    "id": "n5_103",
+    "kanji": "つける",
+    "reading": "つける",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to turn on", "it": "accendere", "ko": "켜다" },
+    "example": { "ja": "電気をつけます。", "en": "I turn on the light." }
+  },
+  {
+    "id": "n5_104",
+    "kanji": "消す",
+    "reading": "けす",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to turn off; to erase", "it": "spegnere; cancellare", "ko": "끄다; 지우다" },
+    "example": { "ja": "テレビを消します。", "en": "I turn off the TV." }
+  },
+  {
+    "id": "n5_105",
+    "kanji": "持つ",
+    "reading": "もつ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to hold; to have", "it": "tenere; avere", "ko": "가지다; 들다" },
+    "example": { "ja": "かばんを持ちます。", "en": "I carry a bag." }
+  },
+  {
+    "id": "n5_106",
+    "kanji": "置く",
+    "reading": "おく",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to put; to place", "it": "mettere; posare", "ko": "놓다; 두다" },
+    "example": { "ja": "机の上に置きます。", "en": "I put it on the desk." }
+  },
+  {
+    "id": "n5_107",
+    "kanji": "取る",
+    "reading": "とる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to take", "it": "prendere", "ko": "잡다; 취하다" },
+    "example": { "ja": "写真を撮ります。", "en": "I take a photograph." }
+  },
+  {
+    "id": "n5_108",
+    "kanji": "切る",
+    "reading": "きる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to cut", "it": "tagliare", "ko": "자르다" },
+    "example": { "ja": "紙を切ります。", "en": "I cut the paper." }
+  },
+  {
+    "id": "n5_109",
+    "kanji": "着る",
+    "reading": "きる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to wear (upper body)", "it": "indossare", "ko": "입다" },
+    "example": { "ja": "シャツを着ます。", "en": "I put on a shirt." }
+  },
+  {
+    "id": "n5_110",
+    "kanji": "脱ぐ",
+    "reading": "ぬぐ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to take off (clothes)", "it": "togliersi", "ko": "벗다" },
+    "example": { "ja": "靴を脱いでください。", "en": "Please take off your shoes." }
+  },
+  {
+    "id": "n5_111",
+    "kanji": "履く",
+    "reading": "はく",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to wear (lower body); to put on (shoes)", "it": "indossare (pantaloni/scarpe)", "ko": "신다; (바지를) 입다" },
+    "example": { "ja": "靴を履きます。", "en": "I put on shoes." }
+  },
+  {
+    "id": "n5_112",
+    "kanji": "かぶる",
+    "reading": "かぶる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to wear (on head)", "it": "indossare (cappello)", "ko": "쓰다 (모자를)" },
+    "example": { "ja": "帽子をかぶります。", "en": "I put on a hat." }
+  },
+  {
+    "id": "n5_113",
+    "kanji": "洗う",
+    "reading": "あらう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to wash", "it": "lavare", "ko": "씻다" },
+    "example": { "ja": "手を洗います。", "en": "I wash my hands." }
+  },
+  {
+    "id": "n5_114",
+    "kanji": "教える",
+    "reading": "おしえる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to teach; to tell", "it": "insegnare; dire", "ko": "가르치다; 알려주다" },
+    "example": { "ja": "日本語を教えます。", "en": "I teach Japanese." }
+  },
+  {
+    "id": "n5_115",
+    "kanji": "習う",
+    "reading": "ならう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to learn", "it": "imparare", "ko": "배우다" },
+    "example": { "ja": "日本語を習います。", "en": "I learn Japanese." }
+  },
+  {
+    "id": "n5_116",
+    "kanji": "働く",
+    "reading": "はたらく",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to work", "it": "lavorare", "ko": "일하다" },
+    "example": { "ja": "銀行で働いています。", "en": "I work at a bank." }
+  },
+  {
+    "id": "n5_117",
+    "kanji": "休む",
+    "reading": "やすむ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to rest; to take a day off", "it": "riposarsi; assentarsi", "ko": "쉬다" },
+    "example": { "ja": "今日は休みます。", "en": "I will take today off." }
+  },
+  {
+    "id": "n5_118",
+    "kanji": "始まる",
+    "reading": "はじまる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to begin (intransitive)", "it": "cominciare (intransitivo)", "ko": "시작되다" },
+    "example": { "ja": "授業が始まります。", "en": "The class begins." }
+  },
+  {
+    "id": "n5_119",
+    "kanji": "終わる",
+    "reading": "おわる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to end; to finish", "it": "finire", "ko": "끝나다" },
+    "example": { "ja": "仕事が終わりました。", "en": "Work has finished." }
+  },
+  {
+    "id": "n5_120",
+    "kanji": "出かける",
+    "reading": "でかける",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to go out", "it": "uscire", "ko": "외출하다" },
+    "example": { "ja": "明日出かけます。", "en": "I will go out tomorrow." }
+  },
+  {
+    "id": "n5_121",
+    "kanji": "呼ぶ",
+    "reading": "よぶ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to call; to invite", "it": "chiamare; invitare", "ko": "부르다" },
+    "example": { "ja": "タクシーを呼びます。", "en": "I call a taxi." }
+  },
+  {
+    "id": "n5_122",
+    "kanji": "歌う",
+    "reading": "うたう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to sing", "it": "cantare", "ko": "노래하다" },
+    "example": { "ja": "歌を歌います。", "en": "I sing a song." }
+  },
+  {
+    "id": "n5_123",
+    "kanji": "止まる",
+    "reading": "とまる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to stop (intransitive)", "it": "fermarsi", "ko": "멈추다" },
+    "example": { "ja": "バスが止まりました。", "en": "The bus stopped." }
+  },
+  {
+    "id": "n5_124",
+    "kanji": "乗る",
+    "reading": "のる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to ride; to get on", "it": "salire; prendere (mezzo)", "ko": "타다" },
+    "example": { "ja": "バスに乗ります。", "en": "I get on the bus." }
+  },
+  {
+    "id": "n5_125",
+    "kanji": "降りる",
+    "reading": "おりる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to get off; to descend", "it": "scendere", "ko": "내리다" },
+    "example": { "ja": "次の駅で降ります。", "en": "I get off at the next station." }
+  },
+  {
+    "id": "n5_126",
+    "kanji": "曲がる",
+    "reading": "まがる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to turn; to bend", "it": "girare; svoltare", "ko": "돌다; 구부러지다" },
+    "example": { "ja": "右に曲がってください。", "en": "Please turn right." }
+  },
+  {
+    "id": "n5_127",
+    "kanji": "渡る",
+    "reading": "わたる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to cross", "it": "attraversare", "ko": "건너다" },
+    "example": { "ja": "橋を渡ります。", "en": "I cross the bridge." }
+  },
+  {
+    "id": "n5_128",
+    "kanji": "飛ぶ",
+    "reading": "とぶ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to fly; to jump", "it": "volare; saltare", "ko": "날다; 뛰다" },
+    "example": { "ja": "鳥が飛んでいます。", "en": "A bird is flying." }
+  },
+  {
+    "id": "n5_129",
+    "kanji": "上げる",
+    "reading": "あげる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to give; to raise", "it": "dare; alzare", "ko": "주다; 올리다" },
+    "example": { "ja": "友だちにプレゼントをあげます。", "en": "I give a present to a friend." }
+  },
+  {
+    "id": "n5_130",
+    "kanji": "もらう",
+    "reading": "もらう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to receive", "it": "ricevere", "ko": "받다" },
+    "example": { "ja": "母にプレゼントをもらいました。", "en": "I received a present from my mother." }
+  },
+  {
+    "id": "n5_131",
+    "kanji": "貸す",
+    "reading": "かす",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to lend", "it": "prestare", "ko": "빌려주다" },
+    "example": { "ja": "本を貸します。", "en": "I lend a book." }
+  },
+  {
+    "id": "n5_132",
+    "kanji": "借りる",
+    "reading": "かりる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to borrow", "it": "prendere in prestito", "ko": "빌리다" },
+    "example": { "ja": "図書館で本を借ります。", "en": "I borrow a book from the library." }
+  },
+  {
+    "id": "n5_133",
+    "kanji": "返す",
+    "reading": "かえす",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to return (something)", "it": "restituire", "ko": "돌려주다" },
+    "example": { "ja": "本を返します。", "en": "I return the book." }
+  },
+  {
+    "id": "n5_134",
+    "kanji": "売る",
+    "reading": "うる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to sell", "it": "vendere", "ko": "팔다" },
+    "example": { "ja": "この店は魚を売っています。", "en": "This shop sells fish." }
+  },
+  {
+    "id": "n5_135",
+    "kanji": "払う",
+    "reading": "はらう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to pay", "it": "pagare", "ko": "지불하다" },
+    "example": { "ja": "お金を払います。", "en": "I pay money." }
+  },
+  {
+    "id": "n5_136",
+    "kanji": "押す",
+    "reading": "おす",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to push; to press", "it": "premere; spingere", "ko": "누르다; 밀다" },
+    "example": { "ja": "ボタンを押してください。", "en": "Please press the button." }
+  },
+  {
+    "id": "n5_137",
+    "kanji": "引く",
+    "reading": "ひく",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to pull; to draw", "it": "tirare", "ko": "당기다" },
+    "example": { "ja": "ドアを引いてください。", "en": "Please pull the door." }
+  },
+  {
+    "id": "n5_138",
+    "kanji": "死ぬ",
+    "reading": "しぬ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to die", "it": "morire", "ko": "죽다" },
+    "example": { "ja": "花が死にました。", "en": "The flower died." }
+  },
+  {
+    "id": "n5_139",
+    "kanji": "困る",
+    "reading": "こまる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to be troubled; to be in difficulty", "it": "essere in difficolta", "ko": "곤란하다; 난처하다" },
+    "example": { "ja": "お金がなくて困ります。", "en": "I am in trouble because I have no money." }
+  },
+  {
+    "id": "n5_140",
+    "kanji": "要る",
+    "reading": "いる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to need", "it": "aver bisogno di", "ko": "필요하다" },
+    "example": { "ja": "お金が要ります。", "en": "I need money." }
+  },
+  {
+    "id": "n5_141",
+    "kanji": "知る",
+    "reading": "しる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to know", "it": "sapere; conoscere", "ko": "알다" },
+    "example": { "ja": "田中さんを知っていますか。", "en": "Do you know Mr. Tanaka?" }
+  },
+  {
+    "id": "n5_142",
+    "kanji": "思う",
+    "reading": "おもう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to think", "it": "pensare", "ko": "생각하다" },
+    "example": { "ja": "日本は楽しいと思います。", "en": "I think Japan is fun." }
+  },
+  {
+    "id": "n5_143",
+    "kanji": "言う",
+    "reading": "いう",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to say", "it": "dire", "ko": "말하다" },
+    "example": { "ja": "先生が言いました。", "en": "The teacher said." }
+  },
+  {
+    "id": "n5_144",
+    "kanji": "答える",
+    "reading": "こたえる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to answer", "it": "rispondere", "ko": "대답하다" },
+    "example": { "ja": "質問に答えます。", "en": "I answer the question." }
+  },
+  {
+    "id": "n5_145",
+    "kanji": "忘れる",
+    "reading": "わすれる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to forget", "it": "dimenticare", "ko": "잊다" },
+    "example": { "ja": "かさを忘れました。", "en": "I forgot my umbrella." }
+  },
+  {
+    "id": "n5_146",
+    "kanji": "覚える",
+    "reading": "おぼえる",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to memorize; to remember", "it": "memorizzare; ricordare", "ko": "외우다; 기억하다" },
+    "example": { "ja": "漢字を覚えます。", "en": "I memorize kanji." }
+  },
+  {
+    "id": "n5_147",
+    "kanji": "届ける",
+    "reading": "とどける",
+    "partOfSpeech": "ru-verb",
+    "translations": { "en": "to deliver", "it": "consegnare", "ko": "전달하다; 배달하다" },
+    "example": { "ja": "荷物を届けます。", "en": "I deliver the package." }
+  },
+  {
+    "id": "n5_148",
+    "kanji": "並ぶ",
+    "reading": "ならぶ",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to line up; to stand in a row", "it": "mettersi in fila", "ko": "줄을 서다" },
+    "example": { "ja": "ここに並んでください。", "en": "Please line up here." }
+  },
+  {
+    "id": "n5_149",
+    "kanji": "登る",
+    "reading": "のぼる",
+    "partOfSpeech": "u-verb",
+    "translations": { "en": "to climb", "it": "salire; arrampicarsi", "ko": "오르다" },
+    "example": { "ja": "山に登ります。", "en": "I climb the mountain." }
+  },
+  {
+    "id": "n5_150",
+    "kanji": "散歩する",
+    "reading": "さんぽする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to take a walk", "it": "fare una passeggiata", "ko": "산책하다" },
+    "example": { "ja": "公園を散歩します。", "en": "I take a walk in the park." }
+  },
+  {
+    "id": "n5_151",
+    "kanji": "練習する",
+    "reading": "れんしゅうする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to practice", "it": "esercitarsi", "ko": "연습하다" },
+    "example": { "ja": "ピアノを練習します。", "en": "I practice the piano." }
+  },
+  {
+    "id": "n5_152",
+    "kanji": "料理する",
+    "reading": "りょうりする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to cook", "it": "cucinare", "ko": "요리하다" },
+    "example": { "ja": "毎日料理します。", "en": "I cook every day." }
+  },
+  {
+    "id": "n5_153",
+    "kanji": "掃除する",
+    "reading": "そうじする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to clean", "it": "pulire", "ko": "청소하다" },
+    "example": { "ja": "部屋を掃除します。", "en": "I clean the room." }
+  },
+  {
+    "id": "n5_154",
+    "kanji": "洗濯する",
+    "reading": "せんたくする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to do laundry", "it": "fare il bucato", "ko": "빨래하다" },
+    "example": { "ja": "洗濯をします。", "en": "I do the laundry." }
+  },
+  {
+    "id": "n5_155",
+    "kanji": "買い物する",
+    "reading": "かいものする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to go shopping", "it": "fare spese", "ko": "쇼핑하다" },
+    "example": { "ja": "デパートで買い物します。", "en": "I go shopping at the department store." }
+  },
+  {
+    "id": "n5_156",
+    "kanji": "旅行する",
+    "reading": "りょこうする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to travel", "it": "viaggiare", "ko": "여행하다" },
+    "example": { "ja": "夏に旅行します。", "en": "I travel in summer." }
+  },
+  {
+    "id": "n5_157",
+    "kanji": "結婚する",
+    "reading": "けっこんする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to get married", "it": "sposarsi", "ko": "결혼하다" },
+    "example": { "ja": "来年結婚します。", "en": "I will get married next year." }
+  },
+  {
+    "id": "n5_158",
+    "kanji": "電話する",
+    "reading": "でんわする",
+    "partOfSpeech": "suru-verb",
+    "translations": { "en": "to make a phone call", "it": "telefonare", "ko": "전화하다" },
+    "example": { "ja": "友だちに電話します。", "en": "I call my friend." }
+  },
+  {
+    "id": "n5_159",
+    "kanji": "長い",
+    "reading": "ながい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "long", "it": "lungo", "ko": "길다" },
+    "example": { "ja": "この道は長いです。", "en": "This road is long." }
+  },
+  {
+    "id": "n5_160",
+    "kanji": "短い",
+    "reading": "みじかい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "short (length)", "it": "corto", "ko": "짧다" },
+    "example": { "ja": "この映画は短いです。", "en": "This movie is short." }
+  },
+  {
+    "id": "n5_161",
+    "kanji": "広い",
+    "reading": "ひろい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "wide; spacious", "it": "ampio; spazioso", "ko": "넓다" },
+    "example": { "ja": "この公園は広いです。", "en": "This park is spacious." }
+  },
+  {
+    "id": "n5_162",
+    "kanji": "狭い",
+    "reading": "せまい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "narrow; cramped", "it": "stretto; angusto", "ko": "좁다" },
+    "example": { "ja": "この部屋は狭いです。", "en": "This room is cramped." }
+  },
+  {
+    "id": "n5_163",
+    "kanji": "重い",
+    "reading": "おもい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "heavy", "it": "pesante", "ko": "무겁다" },
+    "example": { "ja": "このかばんは重いです。", "en": "This bag is heavy." }
+  },
+  {
+    "id": "n5_164",
+    "kanji": "軽い",
+    "reading": "かるい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "light (weight)", "it": "leggero", "ko": "가볍다" },
+    "example": { "ja": "この箱は軽いです。", "en": "This box is light." }
+  },
+  {
+    "id": "n5_165",
+    "kanji": "白い",
+    "reading": "しろい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "white", "it": "bianco", "ko": "하얗다; 희다" },
+    "example": { "ja": "白い猫がいます。", "en": "There is a white cat." }
+  },
+  {
+    "id": "n5_166",
+    "kanji": "黒い",
+    "reading": "くろい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "black", "it": "nero", "ko": "까맣다; 검다" },
+    "example": { "ja": "黒い犬がいます。", "en": "There is a black dog." }
+  },
+  {
+    "id": "n5_167",
+    "kanji": "赤い",
+    "reading": "あかい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "red", "it": "rosso", "ko": "빨갛다" },
+    "example": { "ja": "赤い花がきれいです。", "en": "The red flower is beautiful." }
+  },
+  {
+    "id": "n5_168",
+    "kanji": "青い",
+    "reading": "あおい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "blue; green", "it": "blu; azzurro", "ko": "파랗다" },
+    "example": { "ja": "空は青いです。", "en": "The sky is blue." }
+  },
+  {
+    "id": "n5_169",
+    "kanji": "甘い",
+    "reading": "あまい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "sweet", "it": "dolce", "ko": "달다" },
+    "example": { "ja": "このケーキは甘いです。", "en": "This cake is sweet." }
+  },
+  {
+    "id": "n5_170",
+    "kanji": "辛い",
+    "reading": "からい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "spicy; hot", "it": "piccante", "ko": "맵다" },
+    "example": { "ja": "この料理は辛いです。", "en": "This dish is spicy." }
+  },
+  {
+    "id": "n5_171",
+    "kanji": "多い",
+    "reading": "おおい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "many; much", "it": "molti; molto", "ko": "많다" },
+    "example": { "ja": "人が多いです。", "en": "There are many people." }
+  },
+  {
+    "id": "n5_172",
+    "kanji": "少ない",
+    "reading": "すくない",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "few; little", "it": "pochi; poco", "ko": "적다" },
+    "example": { "ja": "お金が少ないです。", "en": "I have little money." }
+  },
+  {
+    "id": "n5_173",
+    "kanji": "若い",
+    "reading": "わかい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "young", "it": "giovane", "ko": "젊다" },
+    "example": { "ja": "あの先生は若いです。", "en": "That teacher is young." }
+  },
+  {
+    "id": "n5_174",
+    "kanji": "強い",
+    "reading": "つよい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "strong", "it": "forte", "ko": "강하다; 세다" },
+    "example": { "ja": "風が強いです。", "en": "The wind is strong." }
+  },
+  {
+    "id": "n5_175",
+    "kanji": "弱い",
+    "reading": "よわい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "weak", "it": "debole", "ko": "약하다" },
+    "example": { "ja": "体が弱いです。", "en": "My body is weak." }
+  },
+  {
+    "id": "n5_176",
+    "kanji": "明るい",
+    "reading": "あかるい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "bright; cheerful", "it": "luminoso; allegro", "ko": "밝다" },
+    "example": { "ja": "この部屋は明るいです。", "en": "This room is bright." }
+  },
+  {
+    "id": "n5_177",
+    "kanji": "暗い",
+    "reading": "くらい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "dark", "it": "buio; scuro", "ko": "어둡다" },
+    "example": { "ja": "夜は暗いです。", "en": "It is dark at night." }
+  },
+  {
+    "id": "n5_178",
+    "kanji": "痛い",
+    "reading": "いたい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "painful; sore", "it": "doloroso; fa male", "ko": "아프다" },
+    "example": { "ja": "頭が痛いです。", "en": "I have a headache." }
+  },
+  {
+    "id": "n5_179",
+    "kanji": "早い",
+    "reading": "はやい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "early; fast", "it": "presto; veloce", "ko": "이르다; 빠르다" },
+    "example": { "ja": "朝早く起きます。", "en": "I wake up early in the morning." }
+  },
+  {
+    "id": "n5_180",
+    "kanji": "遅い",
+    "reading": "おそい",
+    "partOfSpeech": "i-adjective",
+    "translations": { "en": "slow; late", "it": "lento; tardi", "ko": "느리다; 늦다" },
+    "example": { "ja": "バスが遅いです。", "en": "The bus is late." }
+  },
+  {
+    "id": "n5_181",
+    "kanji": "丈夫",
+    "reading": "じょうぶ",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "strong; durable", "it": "robusto; resistente", "ko": "튼튼한" },
+    "example": { "ja": "このかばんは丈夫です。", "en": "This bag is durable." }
+  },
+  {
+    "id": "n5_182",
+    "kanji": "大変",
+    "reading": "たいへん",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "terrible; very", "it": "terribile; molto", "ko": "큰일인; 매우" },
+    "example": { "ja": "仕事が大変です。", "en": "Work is tough." }
+  },
+  {
+    "id": "n5_183",
+    "kanji": "大丈夫",
+    "reading": "だいじょうぶ",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "all right; OK", "it": "va bene; tutto a posto", "ko": "괜찮다" },
+    "example": { "ja": "大丈夫ですか。", "en": "Are you all right?" }
+  },
+  {
+    "id": "n5_184",
+    "kanji": "大切",
+    "reading": "たいせつ",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "important; precious", "it": "importante; prezioso", "ko": "소중한; 중요한" },
+    "example": { "ja": "家族は大切です。", "en": "Family is important." }
+  },
+  {
+    "id": "n5_185",
+    "kanji": "上手",
+    "reading": "じょうず",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "skillful; good at", "it": "bravo; abile", "ko": "잘하는; 능숙한" },
+    "example": { "ja": "田中さんは料理が上手です。", "en": "Mr. Tanaka is good at cooking." }
+  },
+  {
+    "id": "n5_186",
+    "kanji": "下手",
+    "reading": "へた",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "unskillful; bad at", "it": "scarso; non bravo", "ko": "서투른; 못하는" },
+    "example": { "ja": "歌が下手です。", "en": "I am bad at singing." }
+  },
+  {
+    "id": "n5_187",
+    "kanji": "暇",
+    "reading": "ひま",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "free (time); not busy", "it": "libero; non impegnato", "ko": "한가한" },
+    "example": { "ja": "日曜日は暇です。", "en": "I am free on Sunday." }
+  },
+  {
+    "id": "n5_188",
+    "kanji": "賑やか",
+    "reading": "にぎやか",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "lively; bustling", "it": "vivace; animato", "ko": "번화한; 활기찬" },
+    "example": { "ja": "この町は賑やかです。", "en": "This town is lively." }
+  },
+  {
+    "id": "n5_189",
+    "kanji": "簡単",
+    "reading": "かんたん",
+    "partOfSpeech": "na-adjective",
+    "translations": { "en": "easy; simple", "it": "facile; semplice", "ko": "간단한; 쉬운" },
+    "example": { "ja": "この問題は簡単です。", "en": "This problem is easy." }
+  },
+  {
+    "id": "n5_190",
+    "kanji": "色",
+    "reading": "いろ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "color", "it": "colore", "ko": "색; 색깔" },
+    "example": { "ja": "何色が好きですか。", "en": "What color do you like?" }
+  },
+  {
+    "id": "n5_191",
+    "kanji": "春",
+    "reading": "はる",
+    "partOfSpeech": "noun",
+    "translations": { "en": "spring", "it": "primavera", "ko": "봄" },
+    "example": { "ja": "春は暖かいです。", "en": "Spring is warm." }
+  },
+  {
+    "id": "n5_192",
+    "kanji": "夏",
+    "reading": "なつ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "summer", "it": "estate", "ko": "여름" },
+    "example": { "ja": "夏は暑いです。", "en": "Summer is hot." }
+  },
+  {
+    "id": "n5_193",
+    "kanji": "秋",
+    "reading": "あき",
+    "partOfSpeech": "noun",
+    "translations": { "en": "autumn; fall", "it": "autunno", "ko": "가을" },
+    "example": { "ja": "秋は涼しいです。", "en": "Autumn is cool." }
+  },
+  {
+    "id": "n5_194",
+    "kanji": "冬",
+    "reading": "ふゆ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "winter", "it": "inverno", "ko": "겨울" },
+    "example": { "ja": "冬は寒いです。", "en": "Winter is cold." }
+  },
+  {
+    "id": "n5_195",
+    "kanji": "月",
+    "reading": "つき",
+    "partOfSpeech": "noun",
+    "translations": { "en": "moon; month", "it": "luna; mese", "ko": "달" },
+    "example": { "ja": "月がきれいです。", "en": "The moon is beautiful." }
+  },
+  {
+    "id": "n5_196",
+    "kanji": "先週",
+    "reading": "せんしゅう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "last week", "it": "settimana scorsa", "ko": "지난주" },
+    "example": { "ja": "先週映画を見ました。", "en": "I watched a movie last week." }
+  },
+  {
+    "id": "n5_197",
+    "kanji": "今週",
+    "reading": "こんしゅう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "this week", "it": "questa settimana", "ko": "이번 주" },
+    "example": { "ja": "今週は忙しいです。", "en": "I am busy this week." }
+  },
+  {
+    "id": "n5_198",
+    "kanji": "来週",
+    "reading": "らいしゅう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "next week", "it": "settimana prossima", "ko": "다음 주" },
+    "example": { "ja": "来週テストがあります。", "en": "There is a test next week." }
+  },
+  {
+    "id": "n5_199",
+    "kanji": "先月",
+    "reading": "せんげつ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "last month", "it": "mese scorso", "ko": "지난달" },
+    "example": { "ja": "先月日本に行きました。", "en": "I went to Japan last month." }
+  },
+  {
+    "id": "n5_200",
+    "kanji": "来月",
+    "reading": "らいげつ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "next month", "it": "mese prossimo", "ko": "다음 달" },
+    "example": { "ja": "来月旅行します。", "en": "I will travel next month." }
+  },
+  {
+    "id": "n5_201",
+    "kanji": "去年",
+    "reading": "きょねん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "last year", "it": "anno scorso", "ko": "작년" },
+    "example": { "ja": "去年日本に行きました。", "en": "I went to Japan last year." }
+  },
+  {
+    "id": "n5_202",
+    "kanji": "今年",
+    "reading": "ことし",
+    "partOfSpeech": "noun",
+    "translations": { "en": "this year", "it": "quest'anno", "ko": "올해" },
+    "example": { "ja": "今年は忙しいです。", "en": "I am busy this year." }
+  },
+  {
+    "id": "n5_203",
+    "kanji": "来年",
+    "reading": "らいねん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "next year", "it": "anno prossimo", "ko": "내년" },
+    "example": { "ja": "来年大学に入ります。", "en": "I will enter university next year." }
+  },
+  {
+    "id": "n5_204",
+    "kanji": "午前",
+    "reading": "ごぜん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "morning; A.M.", "it": "mattina; antimeridiano", "ko": "오전" },
+    "example": { "ja": "午前九時に会います。", "en": "We meet at 9 A.M." }
+  },
+  {
+    "id": "n5_205",
+    "kanji": "午後",
+    "reading": "ごご",
+    "partOfSpeech": "noun",
+    "translations": { "en": "afternoon; P.M.", "it": "pomeriggio; pomeridiano", "ko": "오후" },
+    "example": { "ja": "午後三時に来てください。", "en": "Please come at 3 P.M." }
+  },
+  {
+    "id": "n5_206",
+    "kanji": "半",
+    "reading": "はん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "half", "it": "mezzo; meta", "ko": "반" },
+    "example": { "ja": "七時半に起きます。", "en": "I wake up at 7:30." }
+  },
+  {
+    "id": "n5_207",
+    "kanji": "家",
+    "reading": "いえ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "house; home", "it": "casa", "ko": "집" },
+    "example": { "ja": "家は駅の近くです。", "en": "My house is near the station." }
+  },
+  {
+    "id": "n5_208",
+    "kanji": "部屋",
+    "reading": "へや",
+    "partOfSpeech": "noun",
+    "translations": { "en": "room", "it": "stanza; camera", "ko": "방" },
+    "example": { "ja": "部屋はきれいです。", "en": "The room is clean." }
+  },
+  {
+    "id": "n5_209",
+    "kanji": "台所",
+    "reading": "だいどころ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "kitchen", "it": "cucina", "ko": "부엌" },
+    "example": { "ja": "台所で料理します。", "en": "I cook in the kitchen." }
+  },
+  {
+    "id": "n5_210",
+    "kanji": "庭",
+    "reading": "にわ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "garden; yard", "it": "giardino", "ko": "정원; 마당" },
+    "example": { "ja": "庭に花があります。", "en": "There are flowers in the garden." }
+  },
+  {
+    "id": "n5_211",
+    "kanji": "門",
+    "reading": "もん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "gate", "it": "cancello; portone", "ko": "문; 대문" },
+    "example": { "ja": "門の前で待ちます。", "en": "I wait in front of the gate." }
+  },
+  {
+    "id": "n5_212",
+    "kanji": "窓",
+    "reading": "まど",
+    "partOfSpeech": "noun",
+    "translations": { "en": "window", "it": "finestra", "ko": "창문" },
+    "example": { "ja": "窓を開けます。", "en": "I open the window." }
+  },
+  {
+    "id": "n5_213",
+    "kanji": "机",
+    "reading": "つくえ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "desk", "it": "scrivania", "ko": "책상" },
+    "example": { "ja": "机の上に本があります。", "en": "There is a book on the desk." }
+  },
+  {
+    "id": "n5_214",
+    "kanji": "椅子",
+    "reading": "いす",
+    "partOfSpeech": "noun",
+    "translations": { "en": "chair", "it": "sedia", "ko": "의자" },
+    "example": { "ja": "椅子に座ってください。", "en": "Please sit on the chair." }
+  },
+  {
+    "id": "n5_215",
+    "kanji": "傘",
+    "reading": "かさ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "umbrella", "it": "ombrello", "ko": "우산" },
+    "example": { "ja": "傘を持っていきます。", "en": "I take an umbrella with me." }
+  },
+  {
+    "id": "n5_216",
+    "kanji": "鍵",
+    "reading": "かぎ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "key", "it": "chiave", "ko": "열쇠" },
+    "example": { "ja": "鍵を忘れました。", "en": "I forgot my key." }
+  },
+  {
+    "id": "n5_217",
+    "kanji": "財布",
+    "reading": "さいふ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "wallet", "it": "portafoglio", "ko": "지갑" },
+    "example": { "ja": "財布はかばんの中です。", "en": "My wallet is in my bag." }
+  },
+  {
+    "id": "n5_218",
+    "kanji": "時計",
+    "reading": "とけい",
+    "partOfSpeech": "noun",
+    "translations": { "en": "watch; clock", "it": "orologio", "ko": "시계" },
+    "example": { "ja": "時計を見ます。", "en": "I look at the clock." }
+  },
+  {
+    "id": "n5_219",
+    "kanji": "眼鏡",
+    "reading": "めがね",
+    "partOfSpeech": "noun",
+    "translations": { "en": "glasses; eyeglasses", "it": "occhiali", "ko": "안경" },
+    "example": { "ja": "眼鏡をかけます。", "en": "I put on glasses." }
+  },
+  {
+    "id": "n5_220",
+    "kanji": "靴",
+    "reading": "くつ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "shoes", "it": "scarpe", "ko": "신발; 구두" },
+    "example": { "ja": "新しい靴を買いました。", "en": "I bought new shoes." }
+  },
+  {
+    "id": "n5_221",
+    "kanji": "帽子",
+    "reading": "ぼうし",
+    "partOfSpeech": "noun",
+    "translations": { "en": "hat; cap", "it": "cappello", "ko": "모자" },
+    "example": { "ja": "帽子をかぶります。", "en": "I wear a hat." }
+  },
+  {
+    "id": "n5_222",
+    "kanji": "服",
+    "reading": "ふく",
+    "partOfSpeech": "noun",
+    "translations": { "en": "clothes", "it": "vestiti; abbigliamento", "ko": "옷" },
+    "example": { "ja": "新しい服を着ます。", "en": "I wear new clothes." }
+  },
+  {
+    "id": "n5_223",
+    "kanji": "お茶",
+    "reading": "おちゃ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "tea; green tea", "it": "te; te verde", "ko": "차; 녹차" },
+    "example": { "ja": "お茶を飲みます。", "en": "I drink tea." }
+  },
+  {
+    "id": "n5_224",
+    "kanji": null,
+    "reading": "コーヒー",
+    "partOfSpeech": "noun",
+    "translations": { "en": "coffee", "it": "caffe", "ko": "커피" },
+    "example": { "ja": "毎朝コーヒーを飲みます。", "en": "I drink coffee every morning." }
+  },
+  {
+    "id": "n5_225",
+    "kanji": "牛乳",
+    "reading": "ぎゅうにゅう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "milk", "it": "latte", "ko": "우유" },
+    "example": { "ja": "牛乳を飲みます。", "en": "I drink milk." }
+  },
+  {
+    "id": "n5_226",
+    "kanji": "卵",
+    "reading": "たまご",
+    "partOfSpeech": "noun",
+    "translations": { "en": "egg", "it": "uovo", "ko": "계란; 달걀" },
+    "example": { "ja": "卵を食べます。", "en": "I eat an egg." }
+  },
+  {
+    "id": "n5_227",
+    "kanji": null,
+    "reading": "パン",
+    "partOfSpeech": "noun",
+    "translations": { "en": "bread", "it": "pane", "ko": "빵" },
+    "example": { "ja": "朝パンを食べます。", "en": "I eat bread in the morning." }
+  },
+  {
+    "id": "n5_228",
+    "kanji": "御飯",
+    "reading": "ごはん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "rice; meal", "it": "riso; pasto", "ko": "밥; 식사" },
+    "example": { "ja": "ごはんを食べましょう。", "en": "Let's eat a meal." }
+  },
+  {
+    "id": "n5_229",
+    "kanji": "果物",
+    "reading": "くだもの",
+    "partOfSpeech": "noun",
+    "translations": { "en": "fruit", "it": "frutta", "ko": "과일" },
+    "example": { "ja": "果物が好きです。", "en": "I like fruit." }
+  },
+  {
+    "id": "n5_230",
+    "kanji": "お酒",
+    "reading": "おさけ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "alcohol; sake", "it": "alcol; sake", "ko": "술" },
+    "example": { "ja": "お酒を飲みますか。", "en": "Do you drink alcohol?" }
+  },
+  {
+    "id": "n5_231",
+    "kanji": "砂糖",
+    "reading": "さとう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "sugar", "it": "zucchero", "ko": "설탕" },
+    "example": { "ja": "コーヒーに砂糖を入れます。", "en": "I put sugar in my coffee." }
+  },
+  {
+    "id": "n5_232",
+    "kanji": "頭",
+    "reading": "あたま",
+    "partOfSpeech": "noun",
+    "translations": { "en": "head", "it": "testa", "ko": "머리" },
+    "example": { "ja": "頭が痛いです。", "en": "I have a headache." }
+  },
+  {
+    "id": "n5_233",
+    "kanji": "顔",
+    "reading": "かお",
+    "partOfSpeech": "noun",
+    "translations": { "en": "face", "it": "viso; faccia", "ko": "얼굴" },
+    "example": { "ja": "顔を洗います。", "en": "I wash my face." }
+  },
+  {
+    "id": "n5_234",
+    "kanji": "目",
+    "reading": "め",
+    "partOfSpeech": "noun",
+    "translations": { "en": "eye", "it": "occhio", "ko": "눈" },
+    "example": { "ja": "目が大きいです。", "en": "The eyes are big." }
+  },
+  {
+    "id": "n5_235",
+    "kanji": "耳",
+    "reading": "みみ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "ear", "it": "orecchio", "ko": "귀" },
+    "example": { "ja": "耳が痛いです。", "en": "My ear hurts." }
+  },
+  {
+    "id": "n5_236",
+    "kanji": "口",
+    "reading": "くち",
+    "partOfSpeech": "noun",
+    "translations": { "en": "mouth", "it": "bocca", "ko": "입" },
+    "example": { "ja": "口を開けてください。", "en": "Please open your mouth." }
+  },
+  {
+    "id": "n5_237",
+    "kanji": "歯",
+    "reading": "は",
+    "partOfSpeech": "noun",
+    "translations": { "en": "tooth", "it": "dente", "ko": "이; 치아" },
+    "example": { "ja": "歯を磨きます。", "en": "I brush my teeth." }
+  },
+  {
+    "id": "n5_238",
+    "kanji": "手",
+    "reading": "て",
+    "partOfSpeech": "noun",
+    "translations": { "en": "hand", "it": "mano", "ko": "손" },
+    "example": { "ja": "手を洗ってください。", "en": "Please wash your hands." }
+  },
+  {
+    "id": "n5_239",
+    "kanji": "足",
+    "reading": "あし",
+    "partOfSpeech": "noun",
+    "translations": { "en": "foot; leg", "it": "piede; gamba", "ko": "발; 다리" },
+    "example": { "ja": "足が痛いです。", "en": "My leg hurts." }
+  },
+  {
+    "id": "n5_240",
+    "kanji": "体",
+    "reading": "からだ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "body", "it": "corpo", "ko": "몸" },
+    "example": { "ja": "体に気をつけてください。", "en": "Please take care of your body." }
+  },
+  {
+    "id": "n5_241",
+    "kanji": "お腹",
+    "reading": "おなか",
+    "partOfSpeech": "noun",
+    "translations": { "en": "stomach; belly", "it": "pancia; stomaco", "ko": "배" },
+    "example": { "ja": "お腹がすきました。", "en": "I am hungry." }
+  },
+  {
+    "id": "n5_242",
+    "kanji": "空",
+    "reading": "そら",
+    "partOfSpeech": "noun",
+    "translations": { "en": "sky", "it": "cielo", "ko": "하늘" },
+    "example": { "ja": "空が青いです。", "en": "The sky is blue." }
+  },
+  {
+    "id": "n5_243",
+    "kanji": "風",
+    "reading": "かぜ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "wind", "it": "vento", "ko": "바람" },
+    "example": { "ja": "今日は風が強いです。", "en": "The wind is strong today." }
+  },
+  {
+    "id": "n5_244",
+    "kanji": "雪",
+    "reading": "ゆき",
+    "partOfSpeech": "noun",
+    "translations": { "en": "snow", "it": "neve", "ko": "눈 (날씨)" },
+    "example": { "ja": "雪が降っています。", "en": "It is snowing." }
+  },
+  {
+    "id": "n5_245",
+    "kanji": "海",
+    "reading": "うみ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "sea; ocean", "it": "mare; oceano", "ko": "바다" },
+    "example": { "ja": "夏に海に行きます。", "en": "I go to the sea in summer." }
+  },
+  {
+    "id": "n5_246",
+    "kanji": "木",
+    "reading": "き",
+    "partOfSpeech": "noun",
+    "translations": { "en": "tree; wood", "it": "albero; legno", "ko": "나무" },
+    "example": { "ja": "大きい木があります。", "en": "There is a big tree." }
+  },
+  {
+    "id": "n5_247",
+    "kanji": "鳥",
+    "reading": "とり",
+    "partOfSpeech": "noun",
+    "translations": { "en": "bird", "it": "uccello", "ko": "새" },
+    "example": { "ja": "鳥が歌っています。", "en": "A bird is singing." }
+  },
+  {
+    "id": "n5_248",
+    "kanji": "町",
+    "reading": "まち",
+    "partOfSpeech": "noun",
+    "translations": { "en": "town; city", "it": "citta; paese", "ko": "마을; 도시" },
+    "example": { "ja": "この町は静かです。", "en": "This town is quiet." }
+  },
+  {
+    "id": "n5_249",
+    "kanji": "国",
+    "reading": "くに",
+    "partOfSpeech": "noun",
+    "translations": { "en": "country", "it": "paese; nazione", "ko": "나라" },
+    "example": { "ja": "どの国から来ましたか。", "en": "What country are you from?" }
+  },
+  {
+    "id": "n5_250",
+    "kanji": "外国",
+    "reading": "がいこく",
+    "partOfSpeech": "noun",
+    "translations": { "en": "foreign country", "it": "paese straniero", "ko": "외국" },
+    "example": { "ja": "外国に行きたいです。", "en": "I want to go to a foreign country." }
+  },
+  {
+    "id": "n5_251",
+    "kanji": "銀行",
+    "reading": "ぎんこう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "bank", "it": "banca", "ko": "은행" },
+    "example": { "ja": "銀行に行きます。", "en": "I go to the bank." }
+  },
+  {
+    "id": "n5_252",
+    "kanji": "郵便局",
+    "reading": "ゆうびんきょく",
+    "partOfSpeech": "noun",
+    "translations": { "en": "post office", "it": "ufficio postale", "ko": "우체국" },
+    "example": { "ja": "郵便局で切手を買います。", "en": "I buy stamps at the post office." }
+  },
+  {
+    "id": "n5_253",
+    "kanji": "図書館",
+    "reading": "としょかん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "library", "it": "biblioteca", "ko": "도서관" },
+    "example": { "ja": "図書館で勉強します。", "en": "I study at the library." }
+  },
+  {
+    "id": "n5_254",
+    "kanji": "公園",
+    "reading": "こうえん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "park", "it": "parco", "ko": "공원" },
+    "example": { "ja": "公園で遊びます。", "en": "I play in the park." }
+  },
+  {
+    "id": "n5_255",
+    "kanji": "空港",
+    "reading": "くうこう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "airport", "it": "aeroporto", "ko": "공항" },
+    "example": { "ja": "空港に迎えに行きます。", "en": "I go to pick someone up at the airport." }
+  },
+  {
+    "id": "n5_256",
+    "kanji": "会社",
+    "reading": "かいしゃ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "company; office", "it": "azienda; ufficio", "ko": "회사" },
+    "example": { "ja": "会社で働きます。", "en": "I work at the company." }
+  },
+  {
+    "id": "n5_257",
+    "kanji": "大学",
+    "reading": "だいがく",
+    "partOfSpeech": "noun",
+    "translations": { "en": "university; college", "it": "universita", "ko": "대학교" },
+    "example": { "ja": "大学で日本語を勉強します。", "en": "I study Japanese at university." }
+  },
+  {
+    "id": "n5_258",
+    "kanji": "教室",
+    "reading": "きょうしつ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "classroom", "it": "aula", "ko": "교실" },
+    "example": { "ja": "教室に入ります。", "en": "I enter the classroom." }
+  },
+  {
+    "id": "n5_259",
+    "kanji": "授業",
+    "reading": "じゅぎょう",
+    "partOfSpeech": "noun",
+    "translations": { "en": "class; lesson", "it": "lezione", "ko": "수업" },
+    "example": { "ja": "授業は九時に始まります。", "en": "Class starts at nine." }
+  },
+  {
+    "id": "n5_260",
+    "kanji": "宿題",
+    "reading": "しゅくだい",
+    "partOfSpeech": "noun",
+    "translations": { "en": "homework", "it": "compiti", "ko": "숙제" },
+    "example": { "ja": "宿題をしましたか。", "en": "Did you do your homework?" }
+  },
+  {
+    "id": "n5_261",
+    "kanji": "試験",
+    "reading": "しけん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "exam; test", "it": "esame; test", "ko": "시험" },
+    "example": { "ja": "来週試験があります。", "en": "There is an exam next week." }
+  },
+  {
+    "id": "n5_262",
+    "kanji": "質問",
+    "reading": "しつもん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "question", "it": "domanda", "ko": "질문" },
+    "example": { "ja": "質問がありますか。", "en": "Do you have a question?" }
+  },
+  {
+    "id": "n5_263",
+    "kanji": "答え",
+    "reading": "こたえ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "answer", "it": "risposta", "ko": "대답; 답" },
+    "example": { "ja": "答えを書いてください。", "en": "Please write the answer." }
+  },
+  {
+    "id": "n5_264",
+    "kanji": "意味",
+    "reading": "いみ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "meaning", "it": "significato", "ko": "의미; 뜻" },
+    "example": { "ja": "この言葉の意味は何ですか。", "en": "What is the meaning of this word?" }
+  },
+  {
+    "id": "n5_265",
+    "kanji": "言葉",
+    "reading": "ことば",
+    "partOfSpeech": "noun",
+    "translations": { "en": "word; language", "it": "parola; lingua", "ko": "말; 단어" },
+    "example": { "ja": "新しい言葉を覚えます。", "en": "I memorize new words." }
+  },
+  {
+    "id": "n5_266",
+    "kanji": "名前",
+    "reading": "なまえ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "name", "it": "nome", "ko": "이름" },
+    "example": { "ja": "名前を書いてください。", "en": "Please write your name." }
+  },
+  {
+    "id": "n5_267",
+    "kanji": "お金",
+    "reading": "おかね",
+    "partOfSpeech": "noun",
+    "translations": { "en": "money", "it": "soldi; denaro", "ko": "돈" },
+    "example": { "ja": "お金がありません。", "en": "I don't have money." }
+  },
+  {
+    "id": "n5_268",
+    "kanji": "切符",
+    "reading": "きっぷ",
+    "partOfSpeech": "noun",
+    "translations": { "en": "ticket", "it": "biglietto", "ko": "표" },
+    "example": { "ja": "切符を買います。", "en": "I buy a ticket." }
+  },
+  {
+    "id": "n5_269",
+    "kanji": "地図",
+    "reading": "ちず",
+    "partOfSpeech": "noun",
+    "translations": { "en": "map", "it": "mappa; cartina", "ko": "지도" },
+    "example": { "ja": "地図を見ます。", "en": "I look at the map." }
+  },
+  {
+    "id": "n5_270",
+    "kanji": null,
+    "reading": "バス",
+    "partOfSpeech": "noun",
+    "translations": { "en": "bus", "it": "autobus", "ko": "버스" },
+    "example": { "ja": "バスで学校に行きます。", "en": "I go to school by bus." }
+  },
+  {
+    "id": "n5_271",
+    "kanji": null,
+    "reading": "タクシー",
+    "partOfSpeech": "noun",
+    "translations": { "en": "taxi", "it": "taxi", "ko": "택시" },
+    "example": { "ja": "タクシーに乗ります。", "en": "I take a taxi." }
+  },
+  {
+    "id": "n5_272",
+    "kanji": "飛行機",
+    "reading": "ひこうき",
+    "partOfSpeech": "noun",
+    "translations": { "en": "airplane", "it": "aereo", "ko": "비행기" },
+    "example": { "ja": "飛行機で行きます。", "en": "I go by airplane." }
+  },
+  {
+    "id": "n5_273",
+    "kanji": "弟",
+    "reading": "おとうと",
+    "partOfSpeech": "noun",
+    "translations": { "en": "younger brother (own)", "it": "fratello minore (proprio)", "ko": "남동생" },
+    "example": { "ja": "弟は高校生です。", "en": "My younger brother is a high school student." }
+  },
+  {
+    "id": "n5_274",
+    "kanji": "妹",
+    "reading": "いもうと",
+    "partOfSpeech": "noun",
+    "translations": { "en": "younger sister (own)", "it": "sorella minore (propria)", "ko": "여동생" },
+    "example": { "ja": "妹は十歳です。", "en": "My younger sister is ten years old." }
+  },
+  {
+    "id": "n5_275",
+    "kanji": "お父さん",
+    "reading": "おとうさん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "father (someone else's)", "it": "padre (altrui)", "ko": "아버지 (남의)" },
+    "example": { "ja": "お父さんはお元気ですか。", "en": "Is your father well?" }
+  },
+  {
+    "id": "n5_276",
+    "kanji": "お母さん",
+    "reading": "おかあさん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "mother (someone else's)", "it": "madre (altrui)", "ko": "어머니 (남의)" },
+    "example": { "ja": "お母さんによろしく。", "en": "Say hello to your mother." }
+  },
+  {
+    "id": "n5_277",
+    "kanji": "お兄さん",
+    "reading": "おにいさん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "older brother (someone else's)", "it": "fratello maggiore (altrui)", "ko": "형; 오빠 (남의)" },
+    "example": { "ja": "お兄さんは何歳ですか。", "en": "How old is your older brother?" }
+  },
+  {
+    "id": "n5_278",
+    "kanji": "お姉さん",
+    "reading": "おねえさん",
+    "partOfSpeech": "noun",
+    "translations": { "en": "older sister (someone else's)", "it": "sorella maggiore (altrui)", "ko": "언니; 누나 (남의)" },
+    "example": { "ja": "お姉さんはきれいです。", "en": "Your older sister is beautiful." }
+  },
+  {
+    "id": "n5_279",
+    "kanji": "私",
+    "reading": "わたし",
+    "partOfSpeech": "pronoun",
+    "translations": { "en": "I; me", "it": "io", "ko": "나; 저" },
+    "example": { "ja": "私は学生です。", "en": "I am a student." }
+  },
+  {
+    "id": "n5_280",
+    "kanji": null,
+    "reading": "あなた",
+    "partOfSpeech": "pronoun",
+    "translations": { "en": "you", "it": "tu; lei", "ko": "당신; 너" },
+    "example": { "ja": "あなたの名前は何ですか。", "en": "What is your name?" }
+  },
+  {
+    "id": "n5_281",
+    "kanji": "彼",
+    "reading": "かれ",
+    "partOfSpeech": "pronoun",
+    "translations": { "en": "he; him; boyfriend", "it": "lui; ragazzo", "ko": "그; 남자친구" },
+    "example": { "ja": "彼は日本人です。", "en": "He is Japanese." }
+  },
+  {
+    "id": "n5_282",
+    "kanji": "彼女",
+    "reading": "かのじょ",
+    "partOfSpeech": "pronoun",
+    "translations": { "en": "she; her; girlfriend", "it": "lei; ragazza", "ko": "그녀; 여자친구" },
+    "example": { "ja": "彼女は先生です。", "en": "She is a teacher." }
+  },
+  {
+    "id": "n5_283",
+    "kanji": "皆",
+    "reading": "みんな",
+    "partOfSpeech": "pronoun",
+    "translations": { "en": "everyone; everybody", "it": "tutti", "ko": "모두; 다" },
+    "example": { "ja": "皆で食べましょう。", "en": "Let's all eat together." }
+  },
+  {
+    "id": "n5_284",
+    "kanji": null,
+    "reading": "とても",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "very; extremely", "it": "molto", "ko": "매우; 아주" },
+    "example": { "ja": "この料理はとてもおいしいです。", "en": "This dish is very delicious." }
+  },
+  {
+    "id": "n5_285",
+    "kanji": "少し",
+    "reading": "すこし",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "a little; a few", "it": "un po'; poco", "ko": "조금" },
+    "example": { "ja": "日本語が少し分かります。", "en": "I understand a little Japanese." }
+  },
+  {
+    "id": "n5_286",
+    "kanji": "沢山",
+    "reading": "たくさん",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "a lot; many; much", "it": "tanto; molto", "ko": "많이" },
+    "example": { "ja": "果物をたくさん食べます。", "en": "I eat a lot of fruit." }
+  },
+  {
+    "id": "n5_287",
+    "kanji": null,
+    "reading": "いつも",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "always", "it": "sempre", "ko": "항상" },
+    "example": { "ja": "いつも七時に起きます。", "en": "I always wake up at seven." }
+  },
+  {
+    "id": "n5_288",
+    "kanji": "時々",
+    "reading": "ときどき",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "sometimes", "it": "a volte; qualche volta", "ko": "가끔" },
+    "example": { "ja": "時々映画を見ます。", "en": "I sometimes watch movies." }
+  },
+  {
+    "id": "n5_289",
+    "kanji": null,
+    "reading": "よく",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "often; well", "it": "spesso; bene", "ko": "자주; 잘" },
+    "example": { "ja": "よく図書館に行きます。", "en": "I often go to the library." }
+  },
+  {
+    "id": "n5_290",
+    "kanji": null,
+    "reading": "まだ",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "still; not yet", "it": "ancora; non ancora", "ko": "아직" },
+    "example": { "ja": "まだ食べていません。", "en": "I haven't eaten yet." }
+  },
+  {
+    "id": "n5_291",
+    "kanji": null,
+    "reading": "もう",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "already; anymore", "it": "gia; non piu", "ko": "이미; 벌써" },
+    "example": { "ja": "もう食べました。", "en": "I already ate." }
+  },
+  {
+    "id": "n5_292",
+    "kanji": "一番",
+    "reading": "いちばん",
+    "partOfSpeech": "adverb",
+    "translations": { "en": "the most; number one", "it": "il piu; numero uno", "ko": "가장; 제일" },
+    "example": { "ja": "日本語が一番好きです。", "en": "I like Japanese the most." }
+  },
+  {
+    "id": "n5_293",
+    "kanji": "一つ",
+    "reading": "ひとつ",
+    "partOfSpeech": "counter",
+    "translations": { "en": "one (thing)", "it": "uno (oggetto)", "ko": "하나" },
+    "example": { "ja": "りんごを一つください。", "en": "Please give me one apple." }
+  },
+  {
+    "id": "n5_294",
+    "kanji": "二つ",
+    "reading": "ふたつ",
+    "partOfSpeech": "counter",
+    "translations": { "en": "two (things)", "it": "due (oggetti)", "ko": "둘" },
+    "example": { "ja": "卵を二つ買います。", "en": "I buy two eggs." }
+  },
+  {
+    "id": "n5_295",
+    "kanji": "三つ",
+    "reading": "みっつ",
+    "partOfSpeech": "counter",
+    "translations": { "en": "three (things)", "it": "tre (oggetti)", "ko": "셋" },
+    "example": { "ja": "みかんを三つ食べました。", "en": "I ate three tangerines." }
+  },
+  {
+    "id": "n5_296",
+    "kanji": null,
+    "reading": "すみません",
+    "partOfSpeech": "expression",
+    "translations": { "en": "excuse me; I'm sorry", "it": "scusi; mi dispiace", "ko": "실례합니다; 죄송합니다" },
+    "example": { "ja": "すみません、駅はどこですか。", "en": "Excuse me, where is the station?" }
+  },
+  {
+    "id": "n5_297",
+    "kanji": null,
+    "reading": "おはようございます",
+    "partOfSpeech": "expression",
+    "translations": { "en": "good morning", "it": "buongiorno (mattina)", "ko": "좋은 아침입니다" },
+    "example": { "ja": "先生、おはようございます。", "en": "Good morning, teacher." }
+  },
+  {
+    "id": "n5_298",
+    "kanji": null,
+    "reading": "こんにちは",
+    "partOfSpeech": "expression",
+    "translations": { "en": "hello; good afternoon", "it": "buongiorno; buon pomeriggio", "ko": "안녕하세요" },
+    "example": { "ja": "こんにちは、お元気ですか。", "en": "Hello, how are you?" }
+  },
+  {
+    "id": "n5_299",
+    "kanji": null,
+    "reading": "こんばんは",
+    "partOfSpeech": "expression",
+    "translations": { "en": "good evening", "it": "buonasera", "ko": "안녕하세요 (저녁)" },
+    "example": { "ja": "こんばんは、いい天気ですね。", "en": "Good evening, nice weather, isn't it?" }
+  },
+  {
+    "id": "n5_300",
+    "kanji": null,
+    "reading": "おやすみなさい",
+    "partOfSpeech": "expression",
+    "translations": { "en": "good night", "it": "buonanotte", "ko": "안녕히 주무세요" },
+    "example": { "ja": "おやすみなさい、また明日。", "en": "Good night, see you tomorrow." }
+  }
+]

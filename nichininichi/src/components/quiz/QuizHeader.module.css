@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+}
+
+.score {
+  font-size: var(--text-lg);
+}
+
+.scoreValue {
+  font-weight: var(--font-bold);
+  color: var(--color-primary-600);
+}
+
+.scoreSep {
+  color: var(--color-text-tertiary);
+}
+
+.scoreTotal {
+  color: var(--color-text-secondary);
+}
+
+.timer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+
+.timerIcon {
+  color: var(--color-text-tertiary);
+}
+
+.timerValue {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}

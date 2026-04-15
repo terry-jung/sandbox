@@ -1,0 +1,116 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading {
+  padding: var(--space-12);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+.appName {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+.goalRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.goalLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.goalInput {
+  width: 60px;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-sm);
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-input);
+  color: var(--color-text-primary);
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.goalInput::-webkit-outer-spin-button,
+.goalInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.goalInput:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.goalGo {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-family: inherit;
+  font-weight: var(--font-medium);
+  background: var(--color-primary-600);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.goalGo:hover {
+  opacity: 0.85;
+}
+
+.goalGo:active {
+  opacity: 0.7;
+}
+
+.welcome {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.cardArea {
+  width: 100%;
+}
+
+.dots {
+  margin-top: var(--space-5);
+}
+
+.quizButton {
+  margin-top: var(--space-8);
+  width: 100%;
+  max-width: 320px;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    display: none;
+  }
+
+  .quizButton {
+    max-width: 240px;
+  }
+}

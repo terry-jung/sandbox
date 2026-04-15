@@ -1,0 +1,34 @@
+.streak {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.active {
+  color: var(--color-streak-flame);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.inactive {
+  color: var(--color-neutral-400);
+}
+
+.count {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}

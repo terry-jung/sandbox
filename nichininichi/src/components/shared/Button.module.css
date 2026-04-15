@@ -1,0 +1,101 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target-min);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  cursor: pointer;
+  border: none;
+  transition: all var(--duration-fast) var(--ease-default);
+  user-select: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Primary */
+.primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-text-on-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+  box-shadow: var(--shadow-md);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-primary-700);
+  box-shadow: var(--shadow-xs);
+  transform: scale(0.98);
+}
+
+.primary:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-text-disabled);
+}
+
+/* Secondary */
+.secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-neutral-100);
+  border-color: var(--color-neutral-300);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--color-neutral-150);
+  transform: scale(0.98);
+}
+
+/* Ghost */
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-link);
+  font-weight: var(--font-medium);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+  color: var(--color-text-link-hover);
+}
+
+.ghost:active:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+/* Danger */
+.danger {
+  background-color: var(--color-error-500);
+  color: var(--color-text-inverse);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-error-600);
+}
+
+.danger:active:not(:disabled) {
+  background-color: var(--color-error-700);
+  transform: scale(0.98);
+}

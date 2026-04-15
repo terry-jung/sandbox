@@ -1,0 +1,11 @@
+.screen {
+  max-width: var(--quiz-max-width);
+  margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: var(--space-12) 0;
+  font-size: var(--text-base);
+}
