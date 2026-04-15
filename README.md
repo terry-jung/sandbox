@@ -1,4 +1,4 @@
-# terrypractice
+# terry's sandbox
 
 Claude repository
 
