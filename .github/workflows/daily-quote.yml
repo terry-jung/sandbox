@@ -1,0 +1,100 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    # 10:00 AM KST = 01:00 AM UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch: # allow manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate and send inspirational quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          pip install anthropic --quiet
+
+          python3 << 'EOF'
+          import anthropic
+          import smtplib
+          import os
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.text import MIMEText
+          from datetime import datetime
+
+          client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+          message = client.messages.create(
+              model="claude-haiku-4-5-20251001",
+              max_tokens=300,
+              messages=[
+                  {
+                      "role": "user",
+                      "content": (
+                          "Give me ONE powerful, aspirational, and uplifting quote to start my morning with maximum energy and motivation. "
+                          "It should feel like a punch of inspiration — the kind that makes you want to get up and conquer the day. "
+                          "The quote can be from a movie, book, speech, song, podcast, interview, TV show, article, or any source. "
+                          "Be creative and surprising — don't just pick the most famous quotes. Mix it up across different sources, people, and eras. "
+                          "Reply in this exact format and nothing else:\n\n"
+                          "QUOTE: [the quote]\n"
+                          "SOURCE: [person's name — source type, e.g. Rocky Balboa — Rocky (1976) or Brené Brown — Daring Greatly]"
+                      )
+                  }
+              ]
+          )
+
+          raw = message.content[0].text.strip()
+          lines = raw.splitlines()
+          quote_line = next((l for l in lines if l.startswith("QUOTE:")), "")
+          source_line = next((l for l in lines if l.startswith("SOURCE:")), "")
+          quote = quote_line.replace("QUOTE:", "").strip().strip('"')
+          source = source_line.replace("SOURCE:", "").strip()
+
+          now = datetime.utcnow()
+          date_str = now.strftime("%A, %B %d, %Y")
+
+          html_body = f"""
+          <html>
+          <body style="font-family: Georgia, serif; background-color: #0d0d0d; margin: 0; padding: 40px;">
+            <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a1a; border-radius: 12px; padding: 48px; border-left: 4px solid #f5c518;">
+              <p style="color: #888; font-size: 13px; margin: 0 0 32px; letter-spacing: 1px; text-transform: uppercase;">Good morning &mdash; {date_str}</p>
+              <blockquote style="margin: 0 0 32px; padding: 0;">
+                <p style="color: #f0f0f0; font-size: 22px; line-height: 1.7; font-style: italic; margin: 0;">
+                  &ldquo;{quote}&rdquo;
+                </p>
+              </blockquote>
+              <p style="color: #f5c518; font-size: 15px; margin: 0; font-weight: bold;">&mdash; {source}</p>
+              <hr style="border: none; border-top: 1px solid #333; margin: 40px 0 24px;">
+              <p style="color: #555; font-size: 12px; margin: 0; text-align: center;">Your daily 10am KST fuel. Now go get it.</p>
+            </div>
+          </body>
+          </html>
+          """
+
+          text_body = f'"{quote}"\n\n— {source}\n\nGood morning. Now go get it.'
+
+          msg = MIMEMultipart("alternative")
+          msg["Subject"] = f"Your Morning Fuel ☀️ — {date_str}"
+          msg["From"] = os.environ["GMAIL_USER"]
+          msg["To"] = os.environ["RECIPIENT_EMAIL"]
+          msg.attach(MIMEText(text_body, "plain"))
+          msg.attach(MIMEText(html_body, "html"))
+
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+              server.login(os.environ["GMAIL_USER"], os.environ["GMAIL_APP_PASSWORD"])
+              server.sendmail(
+                  os.environ["GMAIL_USER"],
+                  os.environ["RECIPIENT_EMAIL"],
+                  msg.as_string()
+              )
+
+          print(f"Quote sent successfully!")
+          print(f'"{quote}"')
+          print(f"— {source}")
+          EOF
