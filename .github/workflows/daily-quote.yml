@@ -1,0 +1,108 @@
+name: Daily Morning Inspiration
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 10am KST (UTC+9) = 1am UTC
+  workflow_dispatch:  # Manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate and send quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          python3 << 'PYEOF'
+          import anthropic
+          import smtplib
+          import os
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.text import MIMEText
+          from datetime import datetime
+
+          RECIPIENT = "thjung91@gmail.com"
+
+          # Generate quote via Claude
+          client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+          message = client.messages.create(
+              model="claude-opus-4-7",
+              max_tokens=512,
+              messages=[
+                  {
+                      "role": "user",
+                      "content": """Pick ONE powerful, unexpected, energizing quote that will make someone feel genuinely pumped and ready to attack their day. It can be from absolutely anything — a movie, book, speech, song, podcast, interview, TV show, game, poem, anywhere. Avoid clichés. Go deep and varied each time.
+
+Respond in EXACTLY this format (nothing else):
+QUOTE: \"[exact quote]\"
+SOURCE: [who said it / where it's from]
+WHY: [one punchy sentence on why this hits]"""
+                  }
+              ]
+          )
+
+          text = message.content[0].text.strip()
+          lines = text.split('\n')
+
+          quote = next((l.replace('QUOTE:', '').strip().strip('"') for l in lines if l.startswith('QUOTE:')), 'Show up. Do the work.')
+          source = next((l.replace('SOURCE:', '').strip() for l in lines if l.startswith('SOURCE:')), 'Unknown')
+          why = next((l.replace('WHY:', '').strip() for l in lines if l.startswith('WHY:')), '')
+
+          today = datetime.now().strftime('%A, %B %-d')
+
+          html = f"""
+          <html>
+          <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Georgia',serif;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 20px;">
+              <tr><td align="center">
+                <table width="580" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                  <tr>
+                    <td style="background:#1a1a1a;padding:28px 40px;text-align:center;">
+                      <p style="margin:0;color:#f0c060;font-size:12px;letter-spacing:3px;text-transform:uppercase;font-family:sans-serif;">Your Morning Fuel &middot; {today}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:50px 45px 35px;">
+                      <p style="margin:0 0 30px;font-size:24px;line-height:1.65;color:#1a1a1a;font-style:italic;">&ldquo;{quote}&rdquo;</p>
+                      <p style="margin:0;font-size:15px;color:#666;font-family:sans-serif;font-weight:600;letter-spacing:0.5px;">&mdash; {source}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0 45px 25px;">
+                      <div style="background:#f8f4ff;border-left:3px solid #7c3aed;padding:16px 20px;border-radius:0 6px 6px 0;">
+                        <p style="margin:0;font-size:14px;color:#555;font-family:sans-serif;line-height:1.6;">&#x1F4A1; {why}</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background:#1a1a1a;padding:22px 40px;text-align:center;">
+                      <p style="margin:0;color:#aaa;font-size:13px;font-family:sans-serif;">Go get it. Today is yours. &#x1F525;</p>
+                    </td>
+                  </tr>
+                </table>
+              </td></tr>
+            </table>
+          </body>
+          </html>
+          """
+
+          msg = MIMEMultipart('alternative')
+          msg['Subject'] = f"☀️ Morning Fuel — {today}"
+          msg['From'] = RECIPIENT
+          msg['To'] = RECIPIENT
+          msg.attach(MIMEText(html, 'html'))
+
+          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+              server.login(RECIPIENT, os.environ["GMAIL_APP_PASSWORD"])
+              server.sendmail(RECIPIENT, RECIPIENT, msg.as_string())
+
+          print(f"Sent!")
+          print(f"Quote: {quote}")
+          print(f"Source: {source}")
+          PYEOF
