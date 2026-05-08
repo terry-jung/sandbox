@@ -1,0 +1,94 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 1am UTC = 10am KST (UTC+9)
+  workflow_dispatch:      # Manual trigger for testing
+
+jobs:
+  morning-quote:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Generate quote via Claude API
+        run: |
+          python3 << 'PYEOF'
+          import json, urllib.request, os, sys
+
+          payload = {
+            "model": "claude-haiku-4-5-20251001",
+            "max_tokens": 400,
+            "messages": [{
+              "role": "user",
+              "content": (
+                "Give me one powerful, aspirational, inspirational, positive quote "
+                "that will make someone feel pumped up and ready to conquer their day. "
+                "It can be from a movie, book, speech, article, interview, conversation, "
+                "song, podcast, or any source — be creative and varied. "
+                "Format your response as exactly:\n"
+                "\"[quote text]\"\n"
+                "— [Person Name], [Source/Context]\n\n"
+                "Just the quote and attribution, nothing else."
+              )
+            }]
+          }
+
+          req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=json.dumps(payload).encode(),
+            headers={
+              "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+              "anthropic-version": "2023-06-01",
+              "content-type": "application/json"
+            }
+          )
+
+          with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read())
+
+          quote = data["content"][0]["text"].strip()
+          print(quote)
+
+          with open("quote.txt", "w") as f:
+            f.write(quote)
+          PYEOF
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Post quote as GitHub issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const quote = fs.readFileSync('quote.txt', 'utf8').trim();
+
+            const today = new Date().toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              timeZone: 'Asia/Seoul'
+            });
+
+            // Create label if it doesn't exist yet
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'daily-quote',
+                color: 'FFD700',
+                description: 'Daily morning inspirational quote'
+              });
+            } catch (e) {
+              // Label already exists — that's fine
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `☀️ Good Morning! — ${today}`,
+              body: `## Your morning fuel\n\n${quote}\n\n---\n*Have an incredible day. You've got this.* 🚀`,
+              labels: ['daily-quote']
+            });
