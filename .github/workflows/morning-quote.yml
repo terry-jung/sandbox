@@ -1,0 +1,22 @@
+name: 🌅 Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 01:00 UTC = 10:00 AM KST
+  workflow_dispatch:      # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send morning quote to KakaoTalk
+        env:
+          KAKAO_CLIENT_ID: ${{ secrets.KAKAO_CLIENT_ID }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+        run: python scripts/morning_quote.py
