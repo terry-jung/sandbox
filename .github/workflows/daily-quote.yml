@@ -1,0 +1,43 @@
+name: Daily Inspirational Quote (10am KST)
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 1am UTC = 10am KST (UTC+9)
+  workflow_dispatch:        # Allow manual trigger for testing
+
+jobs:
+  send-daily-quote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic pytz
+
+      - name: Generate quote via Claude
+        id: quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/generate_quote.py
+
+      - name: Send quote via email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "🔥 Good Morning — Daily Ignition"
+          to: ${{ secrets.RECIPIENT_EMAIL }}
+          from: "Daily Ignition <${{ secrets.GMAIL_USER }}>"
+          html_body: ${{ steps.quote.outputs.html }}
+          convert_markdown: false
