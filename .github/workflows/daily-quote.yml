@@ -1,0 +1,30 @@
+name: 🔥 Daily Morning Quote (10am KST)
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 10:00 AM KST (UTC+9) = 01:00 UTC
+  workflow_dispatch:        # Manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Send daily quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: thjung91@gmail.com
+        run: python scripts/send_daily_quote.py
