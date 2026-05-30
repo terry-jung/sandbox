@@ -1,0 +1,118 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 10:00 AM KST (UTC+9 = 01:00 UTC)
+  workflow_dispatch:      # manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate and Send Morning Quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: thjung91@gmail.com
+        run: |
+          pip install anthropic --quiet
+          python3 << 'PYEOF'
+          import anthropic
+          import smtplib
+          import os
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.text import MIMEText
+          from datetime import datetime
+
+          client = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'])
+
+          message = client.messages.create(
+              model="claude-opus-4-8",
+              max_tokens=1024,
+              messages=[
+                  {
+                      "role": "user",
+                      "content": """Give me one powerful, aspirational, inspirational quote that will make someone feel pumped and ready to conquer their day.
+
+The quote can be from absolutely anywhere: a movie, book, speech, interview, conversation, song, podcast, TV show, sports moment, historical figure, modern celebrity, entrepreneur, athlete, philosopher, or anyone/anything else. Be creative and varied — sometimes pick unexpected, lesser-known gems over famous cliches.
+
+Format your response EXACTLY like this with no extra text before or after:
+QUOTE: [the full quote]
+SOURCE: [who said it and/or where it's from]
+CONTEXT: [1-2 sentences on why this hits different for starting the day]"""
+                  }
+              ]
+          )
+
+          response_text = message.content[0].text.strip()
+          quote = source = context = ""
+
+          for line in response_text.split('\n'):
+              line = line.strip()
+              if line.startswith('QUOTE:'):
+                  quote = line[6:].strip()
+              elif line.startswith('SOURCE:'):
+                  source = line[7:].strip()
+              elif line.startswith('CONTEXT:'):
+                  context = line[8:].strip()
+
+          today = datetime.now().strftime("%A, %B %d, %Y")
+
+          html_body = f"""
+          <!DOCTYPE html>
+          <html>
+          <body style="font-family: Georgia, 'Times New Roman', serif; max-width: 620px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
+
+            <div style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); padding: 36px 30px; border-radius: 14px; text-align: center; margin-bottom: 16px;">
+              <p style="color: #c9d6ff; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 8px 0;">Good Morning</p>
+              <p style="color: #ffffff; font-size: 28px; margin: 0;">&#9728;&#65039;</p>
+              <p style="color: #a0aec0; font-family: Arial, sans-serif; font-size: 12px; margin: 8px 0 0 0;">{today}</p>
+            </div>
+
+            <div style="background: #ffffff; padding: 40px 36px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid #667eea;">
+              <p style="font-size: 22px; line-height: 1.7; color: #2d3748; font-style: italic; margin: 0 0 24px 0;">&#8220;{quote}&#8221;</p>
+              <p style="font-size: 15px; color: #667eea; font-weight: bold; font-family: Arial, sans-serif; margin: 0 0 24px 0;">&#8212; {source}</p>
+              <hr style="border: none; border-top: 1px solid #e8ecf0; margin: 24px 0;">
+              <p style="font-size: 14px; color: #718096; line-height: 1.7; font-family: Arial, sans-serif; margin: 0;">{context}</p>
+            </div>
+
+            <div style="text-align: center; padding: 24px 20px 10px; color: #a0aec0; font-family: Arial, sans-serif; font-size: 13px;">
+              <p style="margin: 0;">Go make today count. &#128170;</p>
+            </div>
+
+          </body>
+          </html>
+          """
+
+          plain_body = f"""Good Morning! {today}
+
+\"{quote}\"
+
+--- {source}
+
+{context}
+
+Go make today count!
+"""
+
+          msg = MIMEMultipart('alternative')
+          msg['Subject'] = f"Your Morning Boost - {today}"
+          msg['From'] = os.environ['GMAIL_USERNAME']
+          msg['To'] = os.environ['RECIPIENT_EMAIL']
+          msg.attach(MIMEText(plain_body, 'plain'))
+          msg.attach(MIMEText(html_body, 'html'))
+
+          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+              server.login(os.environ['GMAIL_USERNAME'], os.environ['GMAIL_APP_PASSWORD'])
+              server.sendmail(
+                  os.environ['GMAIL_USERNAME'],
+                  os.environ['RECIPIENT_EMAIL'],
+                  msg.as_string()
+              )
+
+          print(f"Sent successfully!")
+          print(f"Quote: {quote}")
+          print(f"Source: {source}")
+          PYEOF
