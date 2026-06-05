@@ -1,0 +1,26 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    # 1:00 AM UTC = 10:00 AM KST (UTC+9)
+    - cron: "0 1 * * *"
+  workflow_dispatch: # allow manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send daily quote email
+        env:
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          GMAIL_SENDER_EMAIL: ${{ secrets.GMAIL_SENDER_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python scripts/send_daily_quote.py
