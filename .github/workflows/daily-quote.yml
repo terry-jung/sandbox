@@ -1,0 +1,117 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 10:00 AM KST (UTC+9)
+  workflow_dispatch:      # Manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate motivational quote via Claude
+        id: quote
+        run: |
+          RESPONSE=$(curl -s https://api.anthropic.com/v1/messages \
+            -H "x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d '{
+              "model": "claude-opus-4-8",
+              "max_tokens": 400,
+              "messages": [{
+                "role": "user",
+                "content": "Give me one single aspirational, inspirational, positive quote to start my morning feeling pumped and ready to conquer the day. Pick something genuinely powerful and surprising — not a cliche. The quote can be from a movie, book, speech, article, interview, conversation, song, podcast, or any other source. Vary the source type each time. Format your response exactly like this with no extra text:\n\nQUOTE: [the full quote]\nSOURCE: [who said it and where/what it is from]"
+              }]
+            }')
+
+          QUOTE_TEXT=$(echo "$RESPONSE" | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          text = data['content'][0]['text']
+          lines = text.strip().split('\n')
+          quote_line = next((l for l in lines if l.startswith('QUOTE:')), '')
+          source_line = next((l for l in lines if l.startswith('SOURCE:')), '')
+          quote = quote_line.replace('QUOTE:', '').strip()
+          source = source_line.replace('SOURCE:', '').strip()
+          print(f'QUOTE={quote}')
+          print(f'SOURCE={source}')
+          ")
+
+          echo "$QUOTE_TEXT" >> $GITHUB_OUTPUT
+
+      - name: Send morning quote email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "Good morning — your daily quote"
+          to: ${{ secrets.GMAIL_USERNAME }}
+          from: ${{ secrets.GMAIL_USERNAME }}
+          html_body: |
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <style>
+                body {
+                  font-family: Georgia, 'Times New Roman', serif;
+                  background-color: #fafaf8;
+                  margin: 0;
+                  padding: 40px 20px;
+                }
+                .container {
+                  max-width: 580px;
+                  margin: 0 auto;
+                  background: #ffffff;
+                  border-radius: 8px;
+                  padding: 48px 48px 40px;
+                  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+                }
+                .greeting {
+                  font-size: 13px;
+                  color: #999;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 32px;
+                }
+                .quote {
+                  font-size: 22px;
+                  line-height: 1.55;
+                  color: #1a1a1a;
+                  font-style: italic;
+                  margin: 0 0 28px;
+                  padding-left: 20px;
+                  border-left: 3px solid #e0d9cc;
+                }
+                .source {
+                  font-size: 14px;
+                  color: #888;
+                  font-style: normal;
+                }
+                .divider {
+                  border: none;
+                  border-top: 1px solid #f0ede8;
+                  margin: 36px 0 28px;
+                }
+                .footer {
+                  font-size: 12px;
+                  color: #bbb;
+                  text-align: center;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <p class="greeting">Good morning &mdash; 10 AM KST</p>
+                <p class="quote">&ldquo;${{ steps.quote.outputs.QUOTE }}&rdquo;</p>
+                <p class="source">&mdash; ${{ steps.quote.outputs.SOURCE }}</p>
+                <hr class="divider">
+                <p class="footer">Go get it. Today is yours.</p>
+              </div>
+            </body>
+            </html>
