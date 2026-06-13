@@ -1,0 +1,123 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 01:00 UTC = 10:00 KST (UTC+9)
+  workflow_dispatch:      # Allow manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate and send daily inspirational quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: thjung91@gmail.com
+          SENDER_EMAIL: thjung91@gmail.com
+        run: |
+          pip install --quiet anthropic
+          python3 << 'PYEOF'
+          import anthropic
+          import smtplib
+          import os
+          from email.mime.text import MIMEText
+          from email.mime.multipart import MIMEMultipart
+          from datetime import datetime, timezone, timedelta
+
+          # --- Generate quote via Claude ---
+          client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+          message = client.messages.create(
+              model="claude-opus-4-8",
+              max_tokens=512,
+              messages=[
+                  {
+                      "role": "user",
+                      "content": (
+                          "Give me one aspirational, inspirational, positive quote that will help someone "
+                          "feel pumped and ready to take on the day.\n\n"
+                          "The quote can come from ANY source — a movie, book, speech, song, podcast, "
+                          "interview, conversation, article, or anything else. Be creative with the source. "
+                          "Pick something that feels electric and alive, not a cliché.\n\n"
+                          "Format your response EXACTLY like this and nothing else:\n"
+                          "QUOTE: [the exact quote]\n"
+                          "SOURCE: [person's name and where it's from, e.g. 'Rocky Balboa, Rocky (1976)' "
+                          "or 'Brené Brown, Daring Greatly' or 'Kendrick Lamar, HUMBLE.']"
+                      ),
+                  }
+              ],
+          )
+
+          response = message.content[0].text.strip()
+          quote = ""
+          source = ""
+          for line in response.splitlines():
+              if line.startswith("QUOTE:"):
+                  quote = line[len("QUOTE:"):].strip()
+              elif line.startswith("SOURCE:"):
+                  source = line[len("SOURCE:"):].strip()
+
+          if not quote or not source:
+              raise ValueError(f"Unexpected Claude response format:\n{response}")
+
+          # --- Build KST timestamp ---
+          kst = timezone(timedelta(hours=9))
+          now = datetime.now(kst)
+          day_name = now.strftime("%A")
+          date_str = now.strftime("%B %d, %Y")
+
+          # --- Compose email ---
+          sender = os.environ["SENDER_EMAIL"]
+          recipient = os.environ["RECIPIENT_EMAIL"]
+          password = os.environ["GMAIL_APP_PASSWORD"]
+
+          msg = MIMEMultipart("alternative")
+          msg["Subject"] = f"Good morning ✦ {day_name}, {date_str}"
+          msg["From"] = sender
+          msg["To"] = recipient
+
+          plain = f"""Good morning!
+
+Here's your quote to start the day:
+
+  "{quote}"
+
+  — {source}
+
+Go make it happen. You've got this.
+"""
+
+          html = f"""<!DOCTYPE html>
+<html>
+<body style="font-family: Georgia, 'Times New Roman', serif; max-width: 580px; margin: 40px auto; padding: 24px 32px; color: #1a1a1a; background: #fff;">
+  <p style="font-size: 11px; color: #999; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 16px;">
+    Good morning &bull; {day_name}, {date_str}
+  </p>
+  <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 0 0 32px;">
+  <blockquote style="font-size: 21px; line-height: 1.65; font-style: italic; color: #111; margin: 0 0 20px; padding: 0 0 0 22px; border-left: 3px solid #111;">
+    &ldquo;{quote}&rdquo;
+  </blockquote>
+  <p style="font-size: 14px; color: #555; margin: 0 0 40px; padding-left: 22px;">
+    &mdash; {source}
+  </p>
+  <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 0 0 24px;">
+  <p style="font-size: 13px; color: #aaa; margin: 0;">
+    Go make it happen. You&rsquo;ve got this. 🔥
+  </p>
+</body>
+</html>"""
+
+          msg.attach(MIMEText(plain, "plain"))
+          msg.attach(MIMEText(html, "html"))
+
+          # --- Send via Gmail SMTP ---
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+              server.login(sender, password)
+              server.sendmail(sender, recipient, msg.as_string())
+
+          print(f"Sent successfully!")
+          print(f"QUOTE: {quote}")
+          print(f"SOURCE: {source}")
+          PYEOF
