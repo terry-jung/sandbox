@@ -1,0 +1,38 @@
+name: Morning Inspiration Quote
+
+on:
+  schedule:
+    # 1am UTC = 10am KST (UTC+9) every day
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+jobs:
+  send-morning-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Send Morning Quote
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Good morning! It's 10am KST. Your job is to pick a single powerful, aspirational, and uplifting quote to send to the user to pump them up for the day ahead.
+
+            Rules:
+            - Pick a quote that feels genuinely energizing and meaningful — not generic filler
+            - Vary the source each day: it can come from a movie, book, speech, interview, song, podcast, TV show, conversation, article, or anywhere else
+            - Vary the speaker/source broadly over time: athletes, philosophers, musicians, scientists, fictional characters, CEOs, activists, writers, comedians, etc.
+            - The quote should be accurate — don't fabricate or paraphrase
+
+            Then call the PushNotification tool with status "proactive" and wrap the message in <routine_summary> tags like this:
+
+            <routine_summary>
+            "QUOTE TEXT HERE" — Person/Source
+
+            Good morning! Start the day strong.
+            </routine_summary>
+
+            Send ONLY the PushNotification. Do not write anything else.
+          allowed_tools: "PushNotification"
