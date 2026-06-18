@@ -1,0 +1,76 @@
+name: Daily Inspirational Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 1am UTC = 10am KST every day
+  workflow_dispatch:      # Allow manual trigger for testing
+
+jobs:
+  send-quote:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Install dependencies
+        run: pip install anthropic pytz
+
+      - name: Generate and post daily quote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'EOF'
+          import anthropic
+          import subprocess
+          from datetime import datetime
+          import pytz
+
+          client = anthropic.Anthropic()
+
+          message = client.messages.create(
+              model="claude-haiku-4-5-20251001",
+              max_tokens=400,
+              messages=[{
+                  "role": "user",
+                  "content": (
+                      "Give me one powerful, aspirational, and inspirational quote that will make someone "
+                      "feel pumped up and ready to take on the day. "
+                      "Draw from a wide variety of sources — movies, books, speeches, articles, interviews, "
+                      "conversations, songs, podcasts, TV shows, athletes, artists, scientists, philosophers, "
+                      "entrepreneurs, fictional characters, coaches, activists, or anyone else. "
+                      "Make it a fresh, surprising pick each time — avoid the most overused classics. "
+                      "Format your response EXACTLY like this (nothing else):\n\n"
+                      "\"[The quote]\"\n"
+                      "— [Person or Character Name], [Source Title / Context, Year if known]"
+                  )
+              }]
+          )
+
+          quote = message.content[0].text.strip()
+
+          kst = pytz.timezone('Asia/Seoul')
+          today = datetime.now(kst).strftime('%A, %B %d, %Y')
+
+          title = f"Good morning — {today}"
+          body = (
+              f"## Your daily fuel for today\n\n"
+              f"{quote}\n\n"
+              f"---\n"
+              f"*Delivered every morning at 10am KST. Go get it.*"
+          )
+
+          result = subprocess.run(
+              ["gh", "issue", "create",
+               "--repo", "terry-jung/sandbox",
+               "--title", title,
+               "--body", body],
+              check=True,
+              capture_output=True,
+              text=True
+          )
+
+          print(f"Posted for {today}")
+          print(f"Issue URL: {result.stdout.strip()}")
+          print(quote)
+          EOF
