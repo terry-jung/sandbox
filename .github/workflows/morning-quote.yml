@@ -1,0 +1,40 @@
+name: Daily Morning Quote
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 10am KST (UTC+9)
+  workflow_dispatch:  # Allow manual trigger for testing
+
+jobs:
+  morning-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Send Daily Inspirational Quote
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            Your one job this morning: pick a single aspirational, energizing, pump-you-up quote
+            to start the day for the user.
+
+            Rules:
+            - Draw from ANYWHERE: movies, books, speeches, articles, interviews, songs, podcasts,
+              conversations, TV shows, stand-up specials, letters, poems — anything goes.
+            - Make it genuinely motivating and positive — the kind that makes you want to get up
+              and attack the day.
+            - Vary the source day to day. Don't repeat the same person or work back to back.
+            - Include: the exact quote, who said it, and the source context
+              (e.g., "from the film Interstellar", "in his 2005 Stanford commencement speech",
+              "from the book Atomic Habits", "Rocky IV", "in a 2019 Hot Ones interview", etc.)
+
+            Format the push notification exactly like this:
+
+            Good morning! ☀️
+
+            "[EXACT QUOTE]"
+
+            — [PERSON], [SOURCE]
+
+            Then send it using the PushNotification tool.
