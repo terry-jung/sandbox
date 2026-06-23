@@ -1,0 +1,93 @@
+name: Morning Inspiration
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 10:00 AM KST (UTC+9)
+  workflow_dispatch:
+
+jobs:
+  daily-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate and send morning quote
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request
+          import json
+          import os
+          import sys
+          import urllib.parse
+          from datetime import datetime
+
+          anthropic_key = os.environ.get('ANTHROPIC_API_KEY', '')
+          if not anthropic_key:
+              print('ERROR: ANTHROPIC_API_KEY secret not set')
+              sys.exit(1)
+
+          day = datetime.utcnow().strftime('%A')
+          req = urllib.request.Request(
+              'https://api.anthropic.com/v1/messages',
+              headers={
+                  'x-api-key': anthropic_key,
+                  'anthropic-version': '2023-06-01',
+                  'content-type': 'application/json'
+              },
+              data=json.dumps({
+                  'model': 'claude-haiku-4-5-20251001',
+                  'max_tokens': 300,
+                  'messages': [{
+                      'role': 'user',
+                      'content': (
+                          f'Today is {day}. Give me ONE powerful, aspirational morning quote '
+                          'to start the day feeling pumped and ready to conquer anything. '
+                          'It can be from a movie, book, speech, song, podcast, interview, '
+                          'a conversation — literally anything! Make it varied and surprising. '
+                          'Format your entire response EXACTLY like this with nothing else:\n'
+                          '"[the quote]"\n— [Person / Source]'
+                      )
+                  }]
+              }).encode()
+          )
+
+          with urllib.request.urlopen(req) as resp:
+              data = json.loads(resp.read())
+
+          quote = data['content'][0]['text'].strip()
+          message = f'☀️ {day} Fuel\n\n{quote}'
+          # KakaoTalk memo supports up to 200 chars
+          message = message[:200]
+          print(f'Quote:\n{message}')
+
+          kakao_token = os.environ.get('KAKAO_ACCESS_TOKEN', '')
+          if not kakao_token:
+              print('KAKAO_ACCESS_TOKEN not set — skipping KakaoTalk delivery')
+              sys.exit(0)
+
+          template = json.dumps({
+              'object_type': 'text',
+              'text': message,
+              'link': {
+                  'web_url': 'https://claude.ai',
+                  'mobile_web_url': 'https://claude.ai'
+              }
+          })
+          body = urllib.parse.urlencode({'template_object': template}).encode()
+          req2 = urllib.request.Request(
+              'https://kapi.kakao.com/v2/api/talk/memo/default/send',
+              headers={
+                  'Authorization': f'Bearer {kakao_token}',
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              data=body
+          )
+          try:
+              with urllib.request.urlopen(req2) as resp:
+                  result = json.loads(resp.read())
+              print(f'KakaoTalk delivered: {result}')
+          except urllib.error.HTTPError as e:
+              print(f'KakaoTalk error {e.code}: {e.read().decode()}')
+              sys.exit(1)
+          PYEOF
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KAKAO_ACCESS_TOKEN: ${{ secrets.KAKAO_ACCESS_TOKEN }}
